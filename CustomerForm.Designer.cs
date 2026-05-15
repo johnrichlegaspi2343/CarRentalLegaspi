@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem
+﻿namespace CarRentalLegaspi
 {
     partial class CustomerForm
     {

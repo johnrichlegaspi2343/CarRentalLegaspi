@@ -15,5 +15,6 @@ C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-w
 C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\ref\CarRentalLegaspi.dll
 C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalLegaspi.AdminForm.resources
 C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalLegaspi.ClerkForm.resources
-C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalSystem.CustomerForm.resources
-C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalSystem.LoginForm.resources
+C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalLegaspi.CustomerForm.resources
+C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalLegaspi.LoginForm.resources
+C:\Users\User\source\repos\CarRentalLegaspi\CarRentalLegaspi\obj\Debug\net10.0-windows\CarRentalLegaspi.sourcelink.json

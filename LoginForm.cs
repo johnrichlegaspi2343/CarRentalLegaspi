@@ -1,7 +1,17 @@
-namespace CarRentalSystem
+using CarRentalLegaspi;
+
+namespace CarRentalLegaspi
 {
     public partial class LoginForm : Form
     {
+        // Hardcoded users — replace with DB later
+        private readonly Dictionary<string, string> users = new()
+        {
+            { "admin",    "admin123" },
+            { "clerk01",  "clerk123" },
+            { "customer", "1234"     }
+        };
+
         public LoginForm()
         {
             InitializeComponent();
@@ -9,33 +19,71 @@ namespace CarRentalSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
+            string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter username and password.",
+                    "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (rdCustomer.Checked)
             {
-                // Basic validation (replace with DB check later)
-                if (username == "customer" && password == "1234")
+                if (users.TryGetValue(username, out var pass) && pass == password
+                    && username == "customer")
                 {
-                    CustomerForm customer = new CustomerForm();
-                    customer.Show();
-                    this.Hide();
+                    OpenForm(new CustomerForm());
                 }
                 else
                 {
-                    MessageBox.Show("Invalid credentials!", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowError();
                 }
             }
             else if (rdAdmin.Checked)
             {
-                // Open AdminForm here later
+                if (username == "admin" && users.TryGetValue(username, out var pass)
+                    && pass == password)
+                {
+                    OpenForm(new AdminForm());
+                }
+                else
+                {
+                    ShowError();
+                }
             }
             else if (rdManager.Checked)
             {
-                // Open ClerkForm here later
-                MessageBox.Show("Clerk panel coming soon.");
+                if (username == "clerk01" && users.TryGetValue(username, out var pass)
+                    && pass == password)
+                {
+                    OpenForm(new ClerkForm());
+                }
+                else
+                {
+                    ShowError();
+                }
             }
+            else
+            {
+                MessageBox.Show("Please select a role.", "Validation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void OpenForm(Form form)
+        {
+            form.Show();
+            this.Hide();
+        }
+
+        private void ShowError()
+        {
+            MessageBox.Show("Invalid username or password.", "Login Failed",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            txtPassword.Clear();
+            txtPassword.Focus();
         }
     }
 }
