@@ -37,21 +37,9 @@
             textBox2 = new TextBox();
             label4 = new Label();
             dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewComboBoxColumn1 = new DataGridViewComboBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
             button3 = new Button();
             button1 = new Button();
@@ -84,6 +72,19 @@
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewComboBoxColumn1 = new DataGridViewComboBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            btnLogOut = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -113,6 +114,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(255, 128, 0);
+            panel1.Controls.Add(btnLogOut);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 0);
@@ -125,7 +127,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(747, 13);
+            label3.Location = new Point(692, 9);
             label3.Name = "label3";
             label3.Size = new Size(218, 21);
             label3.TabIndex = 2;
@@ -198,43 +200,6 @@
             dataGridView2.Size = new Size(973, 383);
             dataGridView2.TabIndex = 11;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Rental";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Customer";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Car";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Days";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Total";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewComboBoxColumn1
-            // 
-            dataGridViewComboBoxColumn1.HeaderText = "Status";
-            dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Action";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
             // tabPage2
             // 
             tabPage2.Controls.Add(panel2);
@@ -248,7 +213,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.DimGray;
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(dataGridView1);
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(-7, 0);
@@ -258,6 +223,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dataGridView1.Location = new Point(26, 240);
@@ -265,34 +231,9 @@
             dataGridView1.Size = new Size(926, 202);
             dataGridView1.TabIndex = 1;
             // 
-            // Column1
-            // 
-            Column1.HeaderText = "Car Name";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Type";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Plate No.";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Rate/Day";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Status";
-            Column5.Name = "Column5";
-            // 
             // panel3
             // 
-            panel3.BackColor = Color.White;
+            panel3.BackColor = Color.WhiteSmoke;
             panel3.Controls.Add(button3);
             panel3.Controls.Add(button1);
             panel3.Controls.Add(comboBox2);
@@ -313,7 +254,7 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.DimGray;
+            button3.BackColor = Color.RoyalBlue;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Location = new Point(519, 113);
@@ -325,9 +266,9 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.DimGray;
+            button1.BackColor = Color.White;
             button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
+            button1.ForeColor = Color.Black;
             button1.Location = new Point(435, 113);
             button1.Name = "button1";
             button1.Size = new Size(78, 27);
@@ -337,7 +278,7 @@
             // 
             // comboBox2
             // 
-            comboBox2.BackColor = Color.Gray;
+            comboBox2.BackColor = Color.White;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(215, 61);
             comboBox2.Name = "comboBox2";
@@ -346,7 +287,7 @@
             // 
             // comboBox1
             // 
-            comboBox1.BackColor = Color.Gray;
+            comboBox1.BackColor = Color.White;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(215, 117);
             comboBox1.Name = "comboBox1";
@@ -355,7 +296,7 @@
             // 
             // textBox5
             // 
-            textBox5.BackColor = Color.Gray;
+            textBox5.BackColor = Color.White;
             textBox5.Location = new Point(30, 117);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(160, 23);
@@ -363,7 +304,7 @@
             // 
             // textBox3
             // 
-            textBox3.BackColor = Color.Gray;
+            textBox3.BackColor = Color.White;
             textBox3.Location = new Point(437, 61);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(160, 23);
@@ -371,7 +312,7 @@
             // 
             // textBox1
             // 
-            textBox1.BackColor = Color.Gray;
+            textBox1.BackColor = Color.White;
             textBox1.Location = new Point(29, 60);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(160, 23);
@@ -455,7 +396,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.DimGray;
+            panel4.BackColor = Color.White;
             panel4.Controls.Add(panel6);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(0, 0);
@@ -496,7 +437,7 @@
             // 
             // dataGridView3
             // 
-            dataGridView3.BackgroundColor = Color.White;
+            dataGridView3.BackgroundColor = Color.WhiteSmoke;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8, Column9, Column10 });
             dataGridView3.Location = new Point(0, 0);
@@ -536,7 +477,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.White;
+            panel5.BackColor = Color.WhiteSmoke;
             panel5.Controls.Add(button4);
             panel5.Controls.Add(dateTimePicker2);
             panel5.Controls.Add(dateTimePicker1);
@@ -550,9 +491,9 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.DimGray;
+            button4.BackColor = Color.WhiteSmoke;
             button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
+            button4.ForeColor = Color.Black;
             button4.Location = new Point(444, 58);
             button4.Name = "button4";
             button4.Size = new Size(105, 36);
@@ -607,14 +548,99 @@
             label10.TabIndex = 0;
             label10.Text = "Data Range";
             // 
-            // form1
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn1.HeaderText = "Rental";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn2.HeaderText = "Customer";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn3.HeaderText = "Car";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn4.HeaderText = "Days";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn5.HeaderText = "Total";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            dataGridViewComboBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewComboBoxColumn1.HeaderText = "Status";
+            dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
+            dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn6.HeaderText = "Action";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column1.HeaderText = "Car Name";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column2.HeaderText = "Type";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Plate No.";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column4.HeaderText = "Rate/Day";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column5.HeaderText = "Status";
+            Column5.Name = "Column5";
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Red;
+            btnLogOut.ForeColor = Color.White;
+            btnLogOut.Location = new Point(916, 8);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(60, 26);
+            btnLogOut.TabIndex = 3;
+            btnLogOut.Text = "Logout";
+            btnLogOut.UseVisualStyleBackColor = false;
+            // 
+            // ClerkForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(978, 542);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
-            Name = "form1";
+            Name = "ClerkForm";
             Text = "ManagerForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -647,13 +673,6 @@
         private TextBox textBox2;
         private Label label4;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private Label label3;
@@ -673,11 +692,6 @@
         private ComboBox comboBox2;
         private ComboBox comboBox1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
         private Panel panel4;
         private Panel panel5;
         private Label label12;
@@ -695,5 +709,18 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private Button btnLogOut;
     }
 }

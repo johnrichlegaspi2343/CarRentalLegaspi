@@ -186,7 +186,7 @@ namespace CarRentalLegaspi
 
             cmbPaymentMethod.SelectedIndex = -1;
 
-            txtAmountPaid.Clear(); 
+            txtAmountPaid.Clear();
 
             txtTotalCost.Text = "TOTAL COST: ₱0.00";
 
@@ -218,5 +218,6 @@ namespace CarRentalLegaspi
                 login.Show();
             }
         }
+
     }
 }

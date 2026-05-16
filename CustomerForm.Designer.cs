@@ -204,10 +204,10 @@
             // 
             // txtAddress
             // 
-            txtAddress.BackColor = Color.Gray;
+            txtAddress.BackColor = Color.White;
             txtAddress.Font = new Font("Segoe UI", 14F);
-            txtAddress.ForeColor = Color.White;
-            txtAddress.Location = new Point(21, 251);
+            txtAddress.ForeColor = Color.Black;
+            txtAddress.Location = new Point(21, 239);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(751, 76);
@@ -217,7 +217,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.FromArgb(255, 128, 0);
-            label8.Location = new Point(21, 228);
+            label8.Location = new Point(21, 216);
             label8.Name = "label8";
             label8.Size = new Size(65, 20);
             label8.TabIndex = 9;
@@ -225,9 +225,9 @@
             // 
             // txtEmail
             // 
-            txtEmail.BackColor = Color.Gray;
+            txtEmail.BackColor = Color.White;
             txtEmail.Font = new Font("Segoe UI", 14F);
-            txtEmail.ForeColor = Color.White;
+            txtEmail.ForeColor = Color.Black;
             txtEmail.Location = new Point(478, 168);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(294, 32);
@@ -235,9 +235,9 @@
             // 
             // txtContact
             // 
-            txtContact.BackColor = Color.Gray;
+            txtContact.BackColor = Color.White;
             txtContact.Font = new Font("Segoe UI", 14F);
-            txtContact.ForeColor = Color.White;
+            txtContact.ForeColor = Color.Black;
             txtContact.Location = new Point(21, 168);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(294, 32);
@@ -265,9 +265,9 @@
             // 
             // txtLastName
             // 
-            txtLastName.BackColor = Color.Gray;
+            txtLastName.BackColor = Color.White;
             txtLastName.Font = new Font("Segoe UI", 14F);
-            txtLastName.ForeColor = Color.White;
+            txtLastName.ForeColor = Color.Black;
             txtLastName.Location = new Point(478, 88);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(294, 32);
@@ -275,9 +275,9 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.BackColor = Color.Gray;
+            txtFirstName.BackColor = Color.White;
             txtFirstName.Font = new Font("Segoe UI", 14F);
-            txtFirstName.ForeColor = Color.White;
+            txtFirstName.ForeColor = Color.Black;
             txtFirstName.Location = new Point(21, 88);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(294, 32);
@@ -397,9 +397,9 @@
             // 
             // nudDays
             // 
-            nudDays.BackColor = Color.Gray;
+            nudDays.BackColor = Color.White;
             nudDays.Font = new Font("Segoe UI", 14F);
-            nudDays.ForeColor = Color.White;
+            nudDays.ForeColor = Color.Black;
             nudDays.Location = new Point(579, 135);
             nudDays.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudDays.Name = "nudDays";
@@ -409,9 +409,9 @@
             // 
             // nudCars
             // 
-            nudCars.BackColor = Color.Gray;
+            nudCars.BackColor = Color.White;
             nudCars.Font = new Font("Segoe UI", 14F);
-            nudCars.ForeColor = Color.White;
+            nudCars.ForeColor = Color.Black;
             nudCars.Location = new Point(322, 135);
             nudCars.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudCars.Name = "nudCars";
@@ -421,9 +421,9 @@
             // 
             // txtRate
             // 
-            txtRate.BackColor = Color.Gray;
+            txtRate.BackColor = Color.White;
             txtRate.Font = new Font("Segoe UI", 14F);
-            txtRate.ForeColor = Color.White;
+            txtRate.ForeColor = Color.Black;
             txtRate.Location = new Point(579, 215);
             txtRate.Name = "txtRate";
             txtRate.ReadOnly = true;
@@ -432,9 +432,9 @@
             // 
             // cmbCar
             // 
-            cmbCar.BackColor = Color.Gray;
+            cmbCar.BackColor = Color.White;
             cmbCar.Font = new Font("Segoe UI", 11F);
-            cmbCar.ForeColor = Color.White;
+            cmbCar.ForeColor = Color.Black;
             cmbCar.FormattingEnabled = true;
             cmbCar.Location = new Point(23, 134);
             cmbCar.Name = "cmbCar";
@@ -590,9 +590,9 @@
             // 
             // txtAmountPaid
             // 
-            txtAmountPaid.BackColor = Color.Gray;
+            txtAmountPaid.BackColor = Color.White;
             txtAmountPaid.Font = new Font("Segoe UI", 14F);
-            txtAmountPaid.ForeColor = Color.White;
+            txtAmountPaid.ForeColor = Color.Black;
             txtAmountPaid.Location = new Point(470, 88);
             txtAmountPaid.Name = "txtAmountPaid";
             txtAmountPaid.Size = new Size(294, 32);
@@ -600,9 +600,9 @@
             // 
             // cmbPaymentMethod
             // 
-            cmbPaymentMethod.BackColor = Color.Gray;
+            cmbPaymentMethod.BackColor = Color.White;
             cmbPaymentMethod.Font = new Font("Segoe UI", 14F);
-            cmbPaymentMethod.ForeColor = Color.White;
+            cmbPaymentMethod.ForeColor = Color.Black;
             cmbPaymentMethod.FormattingEnabled = true;
             cmbPaymentMethod.Location = new Point(21, 87);
             cmbPaymentMethod.Name = "cmbPaymentMethod";
