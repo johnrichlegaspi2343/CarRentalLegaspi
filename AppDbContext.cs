@@ -1,60 +1,70 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarRentalLegaspi
 {
     public class Rental
     {
-        public int Id { get; set; }          // EF Core automatically makes 'Id' the Primary Key
+        public int Id { get; set; }
         public string Customer { get; set; } = string.Empty;
-        public string Car { get; set; }
+        public string Car { get; set; } = string.Empty;
         public int Days { get; set; }
         public decimal Total { get; set; }
-        public string Status { get; set; }
-        public string Action { get; set; }
+        public string Status { get; set; } = string.Empty;
+        public string Action { get; set; } = string.Empty;
     }
+
     public class Car
     {
-        public int Id { get; set; }          // EF Core automatically makes 'Id' the Primary Key
+        public int Id { get; set; }
         public string CarName { get; set; } = string.Empty;
-        public string Type { get; set; }
-        public int PlateNum { get; set; }
-        public string Status { get; set; }
+        public string Type { get; set; } = string.Empty;
+        public string PlateNum { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
         public decimal RatePerDay { get; set; }
     }
+
     public class Reports
     {
-        public int Id { get; set; }          // EF Core automatically makes 'Id' the Primary Key
+        public int Id { get; set; }
         public string Customer { get; set; } = string.Empty;
-        public string Car { get; set; }
+        public string Car { get; set; } = string.Empty;
         public decimal Total { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = string.Empty;
     }
+
     public class User
     {
-        public int Id { get; set; }          // EF Core automatically makes 'Id' the Primary Key
-        public string Customer { get; set; } = string.Empty;
-        public string Password { get; set; } 
+        public int Id { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
-        public decimal Action { get; set; }
+        public decimal Action { get; set; }  // kept to match existing DB column
     }
-   
-    
 
     public class AppDbContext : DbContext
     {
-        // This represents the "Products" table in SQL Server
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Reports> Reports { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<User> Users { get; set; }
 
-        // Configure the connection string pointing to your local SQL Server Express
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder o)
+            => o.UseSqlServer(
+                "Server=localhost;Database=CarRentalDB;" +
+                "Trusted_Connection=True;TrustServerCertificate=True;");
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=CarRentalDB;Trusted_Connection=True;TrustServerCertificate=True;");
+            // Map C# "Username" → existing DB column "Customer"
+            modelBuilder.Entity<User>()
+                .Property(u => u.Username)
+                .HasColumnName("Customer");
+
+            // Ensure PlateNum stored as nvarchar(50)
+            modelBuilder.Entity<Car>()
+                .Property(c => c.PlateNum)
+                .HasColumnName("PlateNum")
+                .HasColumnType("nvarchar(50)");
         }
     }
 }

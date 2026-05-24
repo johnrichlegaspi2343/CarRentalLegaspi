@@ -96,14 +96,14 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(879, 52);
+            panel1.Size = new Size(959, 52);
             panel1.TabIndex = 0;
             // 
             // btnLogOut
             // 
             btnLogOut.BackColor = Color.Red;
             btnLogOut.ForeColor = Color.White;
-            btnLogOut.Location = new Point(807, 12);
+            btnLogOut.Location = new Point(890, 11);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Size = new Size(60, 26);
             btnLogOut.TabIndex = 2;
@@ -114,13 +114,13 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(564, 13);
+            label2.Location = new Point(781, 12);
             label2.Name = "label2";
-            label2.Size = new Size(222, 21);
+            label2.Size = new Size(110, 21);
             label2.TabIndex = 1;
-            label2.Text = "👤Juan Dela Cruz  ·  Customer";
+            label2.Text = "👤 Customer";
             // 
             // label1
             // 
@@ -141,28 +141,27 @@
             tabControl1.Location = new Point(3, 58);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(873, 450);
+            tabControl1.Size = new Size(957, 474);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.DimGray;
-            tabPage1.Controls.Add(btnNext);
-            tabPage1.Controls.Add(btnClear);
+            tabPage1.BackColor = Color.White;
             tabPage1.Controls.Add(panel2);
             tabPage1.Font = new Font("Segoe UI", 11F);
             tabPage1.ForeColor = Color.White;
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(865, 422);
+            tabPage1.Size = new Size(949, 446);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Customer Details";
             // 
             // btnNext
             // 
             btnNext.BackColor = Color.FromArgb(255, 128, 0);
-            btnNext.Location = new Point(732, 380);
+            btnNext.ForeColor = Color.Black;
+            btnNext.Location = new Point(732, 321);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(97, 34);
             btnNext.TabIndex = 12;
@@ -173,7 +172,8 @@
             // btnClear
             // 
             btnClear.BackColor = Color.FromArgb(255, 128, 0);
-            btnClear.Location = new Point(618, 380);
+            btnClear.ForeColor = Color.Black;
+            btnClear.Location = new Point(629, 321);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(97, 34);
             btnClear.TabIndex = 11;
@@ -184,7 +184,9 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.White;
+            panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(btnClear);
+            panel2.Controls.Add(btnNext);
             panel2.Controls.Add(txtAddress);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(txtEmail);
@@ -199,7 +201,7 @@
             panel2.ForeColor = Color.FromArgb(255, 128, 0);
             panel2.Location = new Point(40, 28);
             panel2.Name = "panel2";
-            panel2.Size = new Size(789, 346);
+            panel2.Size = new Size(873, 370);
             panel2.TabIndex = 3;
             // 
             // txtAddress
@@ -210,7 +212,7 @@
             txtAddress.Location = new Point(21, 239);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(751, 76);
+            txtAddress.Size = new Size(808, 76);
             txtAddress.TabIndex = 10;
             // 
             // label8
@@ -230,7 +232,7 @@
             txtEmail.ForeColor = Color.Black;
             txtEmail.Location = new Point(478, 168);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(294, 32);
+            txtEmail.Size = new Size(351, 32);
             txtEmail.TabIndex = 8;
             // 
             // txtContact
@@ -270,7 +272,7 @@
             txtLastName.ForeColor = Color.Black;
             txtLastName.Location = new Point(478, 88);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(294, 32);
+            txtLastName.Size = new Size(351, 32);
             txtLastName.TabIndex = 4;
             // 
             // txtFirstName
@@ -316,23 +318,22 @@
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = Color.DimGray;
-            tabPage2.Controls.Add(btnReturn);
-            tabPage2.Controls.Add(btnCompute);
+            tabPage2.BackColor = Color.White;
             tabPage2.Controls.Add(panel3);
             tabPage2.Font = new Font("Segoe UI", 11F);
             tabPage2.ForeColor = Color.White;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(865, 422);
+            tabPage2.Size = new Size(949, 446);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Rental Details";
             // 
             // btnReturn
             // 
             btnReturn.BackColor = Color.FromArgb(255, 128, 0);
-            btnReturn.Location = new Point(597, 382);
+            btnReturn.ForeColor = Color.Black;
+            btnReturn.Location = new Point(556, 285);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(97, 34);
             btnReturn.TabIndex = 14;
@@ -343,7 +344,8 @@
             // btnCompute
             // 
             btnCompute.BackColor = Color.FromArgb(255, 128, 0);
-            btnCompute.Location = new Point(713, 382);
+            btnCompute.ForeColor = Color.Black;
+            btnCompute.Location = new Point(659, 285);
             btnCompute.Name = "btnCompute";
             btnCompute.Size = new Size(114, 34);
             btnCompute.TabIndex = 13;
@@ -354,8 +356,10 @@
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = Color.White;
+            panel3.BackColor = Color.WhiteSmoke;
+            panel3.Controls.Add(btnReturn);
             panel3.Controls.Add(dtpReturn);
+            panel3.Controls.Add(btnCompute);
             panel3.Controls.Add(dtpRental);
             panel3.Controls.Add(nudDays);
             panel3.Controls.Add(nudCars);
@@ -371,7 +375,7 @@
             panel3.ForeColor = Color.FromArgb(255, 128, 0);
             panel3.Location = new Point(38, 27);
             panel3.Name = "panel3";
-            panel3.Size = new Size(789, 346);
+            panel3.Size = new Size(873, 370);
             panel3.TabIndex = 4;
             // 
             // dtpReturn
@@ -515,24 +519,22 @@
             // 
             // tabPage3
             // 
-            tabPage3.BackColor = Color.DimGray;
-            tabPage3.Controls.Add(btnConfrim);
-            tabPage3.Controls.Add(btnCancel);
-            tabPage3.Controls.Add(btnBack);
+            tabPage3.BackColor = Color.White;
             tabPage3.Controls.Add(panel4);
             tabPage3.Font = new Font("Segoe UI", 11F);
             tabPage3.ForeColor = Color.White;
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(865, 422);
+            tabPage3.Size = new Size(949, 446);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Payment";
             // 
             // btnConfrim
             // 
             btnConfrim.BackColor = Color.FromArgb(255, 128, 0);
-            btnConfrim.Location = new Point(690, 377);
+            btnConfrim.ForeColor = Color.Black;
+            btnConfrim.Location = new Point(732, 320);
             btnConfrim.Name = "btnConfrim";
             btnConfrim.Size = new Size(138, 34);
             btnConfrim.TabIndex = 17;
@@ -543,7 +545,8 @@
             // btnCancel
             // 
             btnCancel.BackColor = Color.FromArgb(255, 128, 0);
-            btnCancel.Location = new Point(587, 377);
+            btnCancel.ForeColor = Color.Black;
+            btnCancel.Location = new Point(623, 320);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(97, 34);
             btnCancel.TabIndex = 16;
@@ -553,7 +556,8 @@
             // btnBack
             // 
             btnBack.BackColor = Color.FromArgb(255, 128, 0);
-            btnBack.Location = new Point(484, 377);
+            btnBack.ForeColor = Color.Black;
+            btnBack.Location = new Point(515, 320);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(97, 34);
             btnBack.TabIndex = 15;
@@ -564,9 +568,12 @@
             // panel4
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.White;
+            panel4.BackColor = Color.WhiteSmoke;
+            panel4.Controls.Add(btnConfrim);
             panel4.Controls.Add(txtTotalCost);
+            panel4.Controls.Add(btnCancel);
             panel4.Controls.Add(txtAmountPaid);
+            panel4.Controls.Add(btnBack);
             panel4.Controls.Add(cmbPaymentMethod);
             panel4.Controls.Add(label20);
             panel4.Controls.Add(label21);
@@ -574,7 +581,7 @@
             panel4.ForeColor = Color.FromArgb(255, 128, 0);
             panel4.Location = new Point(39, 25);
             panel4.Name = "panel4";
-            panel4.Size = new Size(789, 346);
+            panel4.Size = new Size(873, 370);
             panel4.TabIndex = 5;
             // 
             // txtTotalCost
@@ -644,7 +651,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(876, 507);
+            ClientSize = new Size(959, 535);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
             Name = "CustomerForm";

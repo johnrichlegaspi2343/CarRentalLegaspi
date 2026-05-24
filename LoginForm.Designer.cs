@@ -46,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(158, 9);
+            label1.Location = new Point(139, 31);
             label1.Name = "label1";
             label1.Size = new Size(194, 39);
             label1.TabIndex = 0;
@@ -57,7 +57,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(133, 60);
+            label2.Location = new Point(114, 70);
             label2.Name = "label2";
             label2.Size = new Size(251, 25);
             label2.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(27, 139);
+            label3.Location = new Point(32, 140);
             label3.Name = "label3";
             label3.Size = new Size(88, 18);
             label3.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(27, 262);
+            label4.Location = new Point(32, 262);
             label4.Name = "label4";
             label4.Size = new Size(86, 18);
             label4.TabIndex = 3;
@@ -95,7 +95,7 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 16F);
-            txtPassword.Location = new Point(27, 283);
+            txtPassword.Location = new Point(32, 283);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -118,7 +118,7 @@
             // 
             rdCustomer.AutoSize = true;
             rdCustomer.Font = new Font("Segoe UI", 11F);
-            rdCustomer.Location = new Point(178, 354);
+            rdCustomer.Location = new Point(197, 354);
             rdCustomer.Name = "rdCustomer";
             rdCustomer.Size = new Size(90, 24);
             rdCustomer.TabIndex = 7;
@@ -130,19 +130,19 @@
             // 
             rdManager.AutoSize = true;
             rdManager.Font = new Font("Segoe UI", 11F);
-            rdManager.Location = new Point(336, 354);
+            rdManager.Location = new Point(401, 354);
             rdManager.Name = "rdManager";
-            rdManager.Size = new Size(125, 24);
+            rdManager.Size = new Size(60, 24);
             rdManager.TabIndex = 8;
             rdManager.TabStop = true;
-            rdManager.Text = "Clerk/Manager";
+            rdManager.Text = "Clerk";
             rdManager.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
             button1.BackColor = Color.FromArgb(255, 128, 0);
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(149, 452);
+            button1.Location = new Point(175, 448);
             button1.Name = "button1";
             button1.Size = new Size(155, 46);
             button1.TabIndex = 9;

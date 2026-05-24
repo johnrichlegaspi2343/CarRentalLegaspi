@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnLogOut = new Button();
             label3 = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
@@ -98,6 +99,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(255, 128, 0);
+            panel1.Controls.Add(btnLogOut);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(1, 0);
@@ -105,12 +107,24 @@
             panel1.Size = new Size(980, 46);
             panel1.TabIndex = 3;
             // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Red;
+            btnLogOut.ForeColor = Color.White;
+            btnLogOut.Location = new Point(901, 9);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(60, 26);
+            btnLogOut.TabIndex = 4;
+            btnLogOut.Text = "Logout";
+            btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
+            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(875, 13);
+            label3.Location = new Point(807, 13);
             label3.Name = "label3";
             label3.Size = new Size(88, 21);
             label3.TabIndex = 2;
@@ -190,7 +204,7 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dataGridView1.Location = new Point(0, 267);
@@ -332,7 +346,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.DimGray;
+            panel4.BackColor = Color.White;
             panel4.Controls.Add(dataGridView3);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(0, 0);
@@ -342,7 +356,7 @@
             // 
             // dataGridView3
             // 
-            dataGridView3.BackgroundColor = Color.White;
+            dataGridView3.BackgroundColor = Color.WhiteSmoke;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8 });
             dataGridView3.Location = new Point(45, 175);
@@ -372,7 +386,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.White;
+            panel5.BackColor = Color.WhiteSmoke;
             panel5.Controls.Add(button2);
             panel5.Controls.Add(button1);
             panel5.Controls.Add(comboBox1);
@@ -407,7 +421,8 @@
             // 
             // comboBox1
             // 
-            comboBox1.BackColor = Color.DimGray;
+            comboBox1.BackColor = Color.White;
+            comboBox1.ForeColor = Color.Black;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Admin", "Clerk", "Customer" });
             comboBox1.Location = new Point(566, 64);
@@ -417,7 +432,7 @@
             // 
             // textBox6
             // 
-            textBox6.BackColor = Color.DimGray;
+            textBox6.BackColor = Color.White;
             textBox6.Location = new Point(274, 64);
             textBox6.Name = "textBox6";
             textBox6.PasswordChar = '*';
@@ -426,7 +441,7 @@
             // 
             // textBox5
             // 
-            textBox5.BackColor = Color.DimGray;
+            textBox5.BackColor = Color.White;
             textBox5.Location = new Point(44, 64);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(150, 23);
@@ -684,5 +699,6 @@
         private Panel panel8;
         private Label label16;
         private TextBox textBox8;
+        private Button btnLogOut;
     }
 }

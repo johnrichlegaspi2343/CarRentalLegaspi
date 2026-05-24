@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             panel1 = new Panel();
+            btnLogOut = new Button();
             label3 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -37,9 +38,21 @@
             textBox2 = new TextBox();
             label4 = new Label();
             dataGridView2 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewComboBoxColumn1 = new DataGridViewCheckBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
             button3 = new Button();
             button1 = new Button();
@@ -72,19 +85,6 @@
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewComboBoxColumn1 = new DataGridViewComboBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            btnLogOut = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -121,6 +121,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(980, 46);
             panel1.TabIndex = 2;
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Red;
+            btnLogOut.ForeColor = Color.White;
+            btnLogOut.Location = new Point(916, 8);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(60, 26);
+            btnLogOut.TabIndex = 3;
+            btnLogOut.Text = "Logout";
+            btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click_1;
             // 
             // label3
             // 
@@ -160,7 +172,7 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.Gray;
+            button2.BackColor = Color.White;
             button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.Black;
             button2.Location = new Point(740, 27);
@@ -172,11 +184,11 @@
             // 
             // textBox2
             // 
-            textBox2.BackColor = Color.Gray;
+            textBox2.BackColor = Color.White;
             textBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(3, 27);
+            textBox2.Location = new Point(0, 27);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(731, 27);
+            textBox2.Size = new Size(734, 27);
             textBox2.TabIndex = 13;
             textBox2.Text = "Search by customer name...";
             // 
@@ -192,13 +204,57 @@
             // 
             // dataGridView2
             // 
-            dataGridView2.BackgroundColor = Color.DimGray;
+            dataGridView2.BackgroundColor = Color.WhiteSmoke;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewComboBoxColumn1, dataGridViewTextBoxColumn6 });
-            dataGridView2.Location = new Point(-4, 68);
+            dataGridView2.Location = new Point(0, 60);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(973, 383);
             dataGridView2.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn1.HeaderText = "Rental";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn2.HeaderText = "Customer";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn3.HeaderText = "Car";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn4.HeaderText = "Days";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn5.HeaderText = "Total";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            dataGridViewComboBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewComboBoxColumn1.HeaderText = "Status";
+            dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
+            dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn6.HeaderText = "Action";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // tabPage2
             // 
@@ -230,6 +286,36 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(926, 202);
             dataGridView1.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column1.HeaderText = "Car Name";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column2.HeaderText = "Type";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Plate No.";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column4.HeaderText = "Rate/Day";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column5.HeaderText = "Status";
+            Column5.Name = "Column5";
             // 
             // panel3
             // 
@@ -412,15 +498,16 @@
             panel6.Controls.Add(dataGridView3);
             panel6.Location = new Point(18, 188);
             panel6.Name = "panel6";
-            panel6.Size = new Size(927, 189);
+            panel6.Size = new Size(927, 254);
             panel6.TabIndex = 1;
             // 
             // label13
             // 
             label13.AutoSize = true;
+            label13.BackColor = Color.WhiteSmoke;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.FromArgb(255, 128, 0);
-            label13.Location = new Point(21, 134);
+            label13.Location = new Point(16, 204);
             label13.Name = "label13";
             label13.Size = new Size(42, 21);
             label13.TabIndex = 2;
@@ -428,11 +515,11 @@
             // 
             // textBox4
             // 
-            textBox4.BackColor = Color.White;
-            textBox4.Location = new Point(0, 108);
+            textBox4.BackColor = Color.WhiteSmoke;
+            textBox4.Location = new Point(0, 173);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(928, 81);
+            textBox4.Size = new Size(927, 81);
             textBox4.TabIndex = 1;
             // 
             // dataGridView3
@@ -442,7 +529,7 @@
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8, Column9, Column10 });
             dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(927, 111);
+            dataGridView3.Size = new Size(927, 175);
             dataGridView3.TabIndex = 0;
             // 
             // Column6
@@ -548,91 +635,6 @@
             label10.TabIndex = 0;
             label10.Text = "Data Range";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn1.HeaderText = "Rental";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.HeaderText = "Customer";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.HeaderText = "Car";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn4.HeaderText = "Days";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn5.HeaderText = "Total";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewComboBoxColumn1
-            // 
-            dataGridViewComboBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewComboBoxColumn1.HeaderText = "Status";
-            dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn6.HeaderText = "Action";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "Car Name";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column2.HeaderText = "Type";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.HeaderText = "Plate No.";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column4.HeaderText = "Rate/Day";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column5.HeaderText = "Status";
-            Column5.Name = "Column5";
-            // 
-            // btnLogOut
-            // 
-            btnLogOut.BackColor = Color.Red;
-            btnLogOut.ForeColor = Color.White;
-            btnLogOut.Location = new Point(916, 8);
-            btnLogOut.Name = "btnLogOut";
-            btnLogOut.Size = new Size(60, 26);
-            btnLogOut.TabIndex = 3;
-            btnLogOut.Text = "Logout";
-            btnLogOut.UseVisualStyleBackColor = false;
-            // 
             // ClerkForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -709,18 +711,18 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private Button btnLogOut;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewCheckBoxColumn dataGridViewComboBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }
