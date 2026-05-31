@@ -132,18 +132,17 @@
             btnLogOut.TabIndex = 3;
             btnLogOut.Text = "Logout";
             btnLogOut.UseVisualStyleBackColor = false;
-            btnLogOut.Click += btnLogOut_Click_1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(692, 9);
+            label3.Location = new Point(838, 9);
             label3.Name = "label3";
-            label3.Size = new Size(218, 21);
+            label3.Size = new Size(72, 21);
             label3.TabIndex = 2;
-            label3.Text = "👤Clerk01 - Clerk/Manager";
+            label3.Text = "👤Clerk";
             // 
             // tabControl1
             // 

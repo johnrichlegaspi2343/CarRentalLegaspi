@@ -53,13 +53,13 @@
             textBox1 = new TextBox();
             tabPage2 = new TabPage();
             panel4 = new Panel();
-            dataGridView3 = new DataGridView();
+            dgvUserManagement = new DataGridView();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewButtonColumn();
             panel5 = new Panel();
-            button2 = new Button();
-            button1 = new Button();
+            btnAddUser = new Button();
+            btnClear = new Button();
             comboBox1 = new ComboBox();
             textBox6 = new TextBox();
             textBox5 = new TextBox();
@@ -73,8 +73,8 @@
             textBox8 = new TextBox();
             panel8 = new Panel();
             label16 = new Label();
-            button3 = new Button();
-            button4 = new Button();
+            btnSave = new Button();
+            btnReset = new Button();
             textBox7 = new TextBox();
             label12 = new Label();
             label13 = new Label();
@@ -88,7 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUserManagement).BeginInit();
             panel5.SuspendLayout();
             tabPage3.SuspendLayout();
             panel6.SuspendLayout();
@@ -252,6 +252,7 @@
             textBox4.Location = new Point(775, 49);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
             textBox4.Size = new Size(116, 48);
             textBox4.TabIndex = 7;
             // 
@@ -263,6 +264,7 @@
             textBox3.Location = new Point(531, 49);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
             textBox3.Size = new Size(105, 48);
             textBox3.TabIndex = 6;
             // 
@@ -274,6 +276,7 @@
             textBox2.Location = new Point(269, 49);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
             textBox2.Size = new Size(105, 48);
             textBox2.TabIndex = 5;
             // 
@@ -329,6 +332,7 @@
             textBox1.Location = new Point(44, 49);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(105, 48);
             textBox1.TabIndex = 0;
             textBox1.TextAlign = HorizontalAlignment.Center;
@@ -347,22 +351,22 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
-            panel4.Controls.Add(dataGridView3);
+            panel4.Controls.Add(dgvUserManagement);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(968, 461);
             panel4.TabIndex = 0;
             // 
-            // dataGridView3
+            // dgvUserManagement
             // 
-            dataGridView3.BackgroundColor = Color.WhiteSmoke;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8 });
-            dataGridView3.Location = new Point(45, 175);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(867, 186);
-            dataGridView3.TabIndex = 1;
+            dgvUserManagement.BackgroundColor = Color.WhiteSmoke;
+            dgvUserManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUserManagement.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8 });
+            dgvUserManagement.Location = new Point(45, 175);
+            dgvUserManagement.Name = "dgvUserManagement";
+            dgvUserManagement.Size = new Size(867, 186);
+            dgvUserManagement.TabIndex = 1;
             // 
             // Column6
             // 
@@ -387,8 +391,8 @@
             // panel5
             // 
             panel5.BackColor = Color.WhiteSmoke;
-            panel5.Controls.Add(button2);
-            panel5.Controls.Add(button1);
+            panel5.Controls.Add(btnAddUser);
+            panel5.Controls.Add(btnClear);
             panel5.Controls.Add(comboBox1);
             panel5.Controls.Add(textBox6);
             panel5.Controls.Add(textBox5);
@@ -401,23 +405,25 @@
             panel5.Size = new Size(867, 124);
             panel5.TabIndex = 0;
             // 
-            // button2
+            // btnAddUser
             // 
-            button2.Location = new Point(627, 93);
-            button2.Name = "button2";
-            button2.Size = new Size(89, 24);
-            button2.TabIndex = 8;
-            button2.Text = "+ Add User";
-            button2.UseVisualStyleBackColor = true;
+            btnAddUser.Location = new Point(627, 93);
+            btnAddUser.Name = "btnAddUser";
+            btnAddUser.Size = new Size(89, 24);
+            btnAddUser.TabIndex = 8;
+            btnAddUser.Text = "+ Add User";
+            btnAddUser.UseVisualStyleBackColor = true;
+            btnAddUser.Click += btnAddUser_Click;
             // 
-            // button1
+            // btnClear
             // 
-            button1.Location = new Point(566, 93);
-            button1.Name = "button1";
-            button1.Size = new Size(55, 24);
-            button1.TabIndex = 7;
-            button1.Text = "X Clear";
-            button1.UseVisualStyleBackColor = true;
+            btnClear.Location = new Point(566, 93);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(55, 24);
+            btnClear.TabIndex = 7;
+            btnClear.Text = "X Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // comboBox1
             // 
@@ -509,8 +515,8 @@
             panel7.BackColor = Color.WhiteSmoke;
             panel7.Controls.Add(textBox8);
             panel7.Controls.Add(panel8);
-            panel7.Controls.Add(button3);
-            panel7.Controls.Add(button4);
+            panel7.Controls.Add(btnSave);
+            panel7.Controls.Add(btnReset);
             panel7.Controls.Add(textBox7);
             panel7.Controls.Add(label12);
             panel7.Controls.Add(label13);
@@ -548,23 +554,23 @@
             label16.TabIndex = 10;
             label16.Text = "Car Rental System";
             // 
-            // button3
+            // btnSave
             // 
-            button3.Location = new Point(739, 199);
-            button3.Name = "button3";
-            button3.Size = new Size(89, 24);
-            button3.TabIndex = 8;
-            button3.Text = "✔️ Save";
-            button3.UseVisualStyleBackColor = true;
+            btnSave.Location = new Point(739, 199);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(89, 24);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "✔️ Save";
+            btnSave.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnReset
             // 
-            button4.Location = new Point(678, 199);
-            button4.Name = "button4";
-            button4.Size = new Size(55, 24);
-            button4.TabIndex = 7;
-            button4.Text = "X Reset";
-            button4.UseVisualStyleBackColor = true;
+            btnReset.Location = new Point(678, 199);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(55, 24);
+            btnReset.TabIndex = 7;
+            btnReset.Text = "X Reset";
+            btnReset.UseVisualStyleBackColor = true;
             // 
             // textBox7
             // 
@@ -634,7 +640,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUserManagement).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             tabPage3.ResumeLayout(false);
@@ -681,16 +687,16 @@
         private Label label10;
         private Label label9;
         private Label label8;
-        private Button button2;
-        private Button button1;
-        private DataGridView dataGridView3;
+        private Button btnAddUser;
+        private Button btnClear;
+        private DataGridView dgvUserManagement;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewButtonColumn Column8;
         private Panel panel6;
         private Panel panel7;
-        private Button button3;
-        private Button button4;
+        private Button btnSave;
+        private Button btnReset;
         private TextBox textBox7;
         private Label label12;
         private Label label13;

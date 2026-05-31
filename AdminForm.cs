@@ -10,11 +10,11 @@
 
         private void WireEvents()
         {
-            button1.Click += button1_Click;   // Clear fields
-            button2.Click += button2_Click;   // Add User
-            button3.Click += button3_Click;   // Save Settings
-            button4.Click += button4_Click;   // Reset Settings
-            dataGridView3.CellContentClick += dataGridView3_CellContentClick;
+            btnClear.Click += btnClear_Click;   // Clear fields
+            btnAddUser.Click += btnAddUser_Click;   // Add User
+            btnSave.Click += btnSave_Click;   // Save Settings
+            btnReset.Click += btnReset_Click;   // Reset Settings
+            dgvUserManagement.CellContentClick += dgvUserManagement_CellContentClick;
         }
 
         // ── DASHBOARD ────────────────────────────────────────────
@@ -46,19 +46,19 @@
             try
             {
                 using var db = new AppDbContext();
-                dataGridView3.Rows.Clear();
+                dgvUserManagement.Rows.Clear();
                 foreach (var u in db.Users.ToList())
                 {
-                    int row = dataGridView3.Rows.Add(u.Username, u.Role);
-                    dataGridView3.Rows[row].Cells["Column8"].Value = "Delete";
-                    dataGridView3.Rows[row].Tag = u.Id;  // store DB Id
+                    int row = dgvUserManagement.Rows.Add(u.Username, u.Role);
+                    dgvUserManagement.Rows[row].Cells["Column8"].Value = "Delete";
+                    dgvUserManagement.Rows[row].Tag = u.Id;  // store DB Id
                 }
             }
             catch (Exception ex)
             { MessageBox.Show($"User load error: {ex.Message}"); }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAddUser_Click(object sender, EventArgs e)
         {
             string username = textBox5.Text.Trim();
             string password = textBox6.Text.Trim();
@@ -84,24 +84,24 @@
             { MessageBox.Show($"Error: {ex.Message}"); }
         }
 
-        private void button1_Click(object s, EventArgs e) => ClearUserFields();
+        private void btnClear_Click(object s, EventArgs e) => ClearUserFields();
 
         private void ClearUserFields()
         { textBox5.Clear(); textBox6.Clear(); comboBox1.SelectedIndex = -1; }
 
-        private void dataGridView3_CellContentClick(object s, DataGridViewCellEventArgs e)
+        private void dgvUserManagement_CellContentClick(object s, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != dataGridView3.Columns["Column8"].Index
+            if (e.ColumnIndex != dgvUserManagement.Columns["Column8"].Index
                 || e.RowIndex < 0) return;
 
-            string uname = dataGridView3.Rows[e.RowIndex]
+            string uname = dgvUserManagement.Rows[e.RowIndex]
                                .Cells["Column6"].Value?.ToString() ?? "";
             if (MessageBox.Show($"Delete '{uname}'?", "Confirm",
                     MessageBoxButtons.YesNo) != DialogResult.Yes) return;
 
             try
             {
-                int id = (int)(dataGridView3.Rows[e.RowIndex].Tag ?? 0);
+                int id = (int)(dgvUserManagement.Rows[e.RowIndex].Tag ?? 0);
                 using var db = new AppDbContext();
                 var user = db.Users.Find(id);
                 if (user != null) { db.Users.Remove(user); db.SaveChanges(); }
@@ -118,9 +118,9 @@
             textBox7.Text = "09XX XXX XXXX";
             textBox8.Text = "Unit/Floor, Building, Street, City";
         }
-        private void button3_Click(object s, EventArgs e) =>
+        private void btnSave_Click(object s, EventArgs e) =>
             MessageBox.Show($"Saved!\nName: {label16.Text}\nContact: {textBox7.Text}\nAddress: {textBox8.Text}");
-        private void button4_Click(object s, EventArgs e) => LoadSettings();
+        private void btnReset_Click(object s, EventArgs e) => LoadSettings();
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         { base.OnFormClosing(e); Application.Exit(); }

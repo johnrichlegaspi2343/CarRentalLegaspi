@@ -34,9 +34,9 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            btnNext = new Button();
-            btnClear = new Button();
             panel2 = new Panel();
+            btnClear = new Button();
+            btnNext = new Button();
             txtAddress = new TextBox();
             label8 = new Label();
             txtEmail = new TextBox();
@@ -49,12 +49,12 @@
             label5 = new Label();
             label4 = new Label();
             tabPage2 = new TabPage();
-            btnReturn = new Button();
-            btnCompute = new Button();
             panel3 = new Panel();
+            noDays = new Label();
+            btnReturn = new Button();
             dtpReturn = new DateTimePicker();
+            btnCompute = new Button();
             dtpRental = new DateTimePicker();
-            nudDays = new NumericUpDown();
             nudCars = new NumericUpDown();
             txtRate = new TextBox();
             cmbCar = new ComboBox();
@@ -66,12 +66,12 @@
             label13 = new Label();
             label14 = new Label();
             tabPage3 = new TabPage();
-            btnConfrim = new Button();
-            btnCancel = new Button();
-            btnBack = new Button();
             panel4 = new Panel();
+            btnConfrim = new Button();
             txtTotalCost = new Label();
+            btnCancel = new Button();
             txtAmountPaid = new TextBox();
+            btnBack = new Button();
             cmbPaymentMethod = new ComboBox();
             label20 = new Label();
             label21 = new Label();
@@ -82,7 +82,6 @@
             panel2.SuspendLayout();
             tabPage2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudDays).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudCars).BeginInit();
             tabPage3.SuspendLayout();
             panel4.SuspendLayout();
@@ -157,30 +156,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Customer Details";
             // 
-            // btnNext
-            // 
-            btnNext.BackColor = Color.FromArgb(255, 128, 0);
-            btnNext.ForeColor = Color.Black;
-            btnNext.Location = new Point(732, 321);
-            btnNext.Name = "btnNext";
-            btnNext.Size = new Size(97, 34);
-            btnNext.TabIndex = 12;
-            btnNext.Text = "Next";
-            btnNext.UseVisualStyleBackColor = false;
-            btnNext.Click += btnNext_Click;
-            // 
-            // btnClear
-            // 
-            btnClear.BackColor = Color.FromArgb(255, 128, 0);
-            btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(629, 321);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(97, 34);
-            btnClear.TabIndex = 11;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = false;
-            btnClear.Click += btnClear_Click;
-            // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -203,6 +178,30 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(873, 370);
             panel2.TabIndex = 3;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.FromArgb(255, 128, 0);
+            btnClear.ForeColor = Color.Black;
+            btnClear.Location = new Point(629, 321);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(97, 34);
+            btnClear.TabIndex = 11;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.BackColor = Color.FromArgb(255, 128, 0);
+            btnNext.ForeColor = Color.Black;
+            btnNext.Location = new Point(732, 321);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(97, 34);
+            btnNext.TabIndex = 12;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = false;
+            btnNext.Click += btnNext_Click;
             // 
             // txtAddress
             // 
@@ -329,39 +328,15 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Rental Details";
             // 
-            // btnReturn
-            // 
-            btnReturn.BackColor = Color.FromArgb(255, 128, 0);
-            btnReturn.ForeColor = Color.Black;
-            btnReturn.Location = new Point(556, 285);
-            btnReturn.Name = "btnReturn";
-            btnReturn.Size = new Size(97, 34);
-            btnReturn.TabIndex = 14;
-            btnReturn.Text = "Back";
-            btnReturn.UseVisualStyleBackColor = false;
-            btnReturn.Click += btnReturn_Click;
-            // 
-            // btnCompute
-            // 
-            btnCompute.BackColor = Color.FromArgb(255, 128, 0);
-            btnCompute.ForeColor = Color.Black;
-            btnCompute.Location = new Point(659, 285);
-            btnCompute.Name = "btnCompute";
-            btnCompute.Size = new Size(114, 34);
-            btnCompute.TabIndex = 13;
-            btnCompute.Text = "Compute";
-            btnCompute.UseVisualStyleBackColor = false;
-            btnCompute.Click += btnCompute_Click;
-            // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.WhiteSmoke;
+            panel3.Controls.Add(noDays);
             panel3.Controls.Add(btnReturn);
             panel3.Controls.Add(dtpReturn);
             panel3.Controls.Add(btnCompute);
             panel3.Controls.Add(dtpRental);
-            panel3.Controls.Add(nudDays);
             panel3.Controls.Add(nudCars);
             panel3.Controls.Add(txtRate);
             panel3.Controls.Add(cmbCar);
@@ -378,6 +353,30 @@
             panel3.Size = new Size(873, 370);
             panel3.TabIndex = 4;
             // 
+            // noDays
+            // 
+            noDays.AutoSize = true;
+            noDays.BorderStyle = BorderStyle.Fixed3D;
+            noDays.Font = new Font("Tahoma", 14F);
+            noDays.ForeColor = Color.Black;
+            noDays.Location = new Point(579, 142);
+            noDays.Name = "noDays";
+            noDays.Size = new Size(22, 25);
+            noDays.TabIndex = 17;
+            noDays.Text = "0";
+            // 
+            // btnReturn
+            // 
+            btnReturn.BackColor = Color.FromArgb(255, 128, 0);
+            btnReturn.ForeColor = Color.Black;
+            btnReturn.Location = new Point(556, 285);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Size = new Size(97, 34);
+            btnReturn.TabIndex = 14;
+            btnReturn.Text = "Back";
+            btnReturn.UseVisualStyleBackColor = false;
+            btnReturn.Click += btnReturn_Click;
+            // 
             // dtpReturn
             // 
             dtpReturn.CalendarFont = new Font("Segoe UI", 14F);
@@ -389,6 +388,18 @@
             dtpReturn.TabIndex = 16;
             dtpReturn.Value = new DateTime(2026, 1, 26, 0, 0, 0, 0);
             // 
+            // btnCompute
+            // 
+            btnCompute.BackColor = Color.FromArgb(255, 128, 0);
+            btnCompute.ForeColor = Color.Black;
+            btnCompute.Location = new Point(659, 285);
+            btnCompute.Name = "btnCompute";
+            btnCompute.Size = new Size(114, 34);
+            btnCompute.TabIndex = 13;
+            btnCompute.Text = "Compute";
+            btnCompute.UseVisualStyleBackColor = false;
+            btnCompute.Click += btnCompute_Click;
+            // 
             // dtpRental
             // 
             dtpRental.CalendarFont = new Font("Segoe UI", 14F);
@@ -398,18 +409,8 @@
             dtpRental.Name = "dtpRental";
             dtpRental.Size = new Size(194, 27);
             dtpRental.TabIndex = 15;
-            // 
-            // nudDays
-            // 
-            nudDays.BackColor = Color.White;
-            nudDays.Font = new Font("Segoe UI", 14F);
-            nudDays.ForeColor = Color.Black;
-            nudDays.Location = new Point(579, 135);
-            nudDays.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nudDays.Name = "nudDays";
-            nudDays.Size = new Size(194, 32);
-            nudDays.TabIndex = 14;
-            nudDays.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            dtpRental.Value = new DateTime(2026, 5, 31, 18, 44, 26, 0);
+            dtpRental.ValueChanged += dtpRental_ValueChanged;
             // 
             // nudCars
             // 
@@ -530,41 +531,6 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Payment";
             // 
-            // btnConfrim
-            // 
-            btnConfrim.BackColor = Color.FromArgb(255, 128, 0);
-            btnConfrim.ForeColor = Color.Black;
-            btnConfrim.Location = new Point(732, 320);
-            btnConfrim.Name = "btnConfrim";
-            btnConfrim.Size = new Size(138, 34);
-            btnConfrim.TabIndex = 17;
-            btnConfrim.Text = "Confirm Payment";
-            btnConfrim.UseVisualStyleBackColor = false;
-            btnConfrim.Click += btnConfirm_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.FromArgb(255, 128, 0);
-            btnCancel.ForeColor = Color.Black;
-            btnCancel.Location = new Point(623, 320);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(97, 34);
-            btnCancel.TabIndex = 16;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = false;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.FromArgb(255, 128, 0);
-            btnBack.ForeColor = Color.Black;
-            btnBack.Location = new Point(515, 320);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(97, 34);
-            btnBack.TabIndex = 15;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBackRental_Click;
-            // 
             // panel4
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -584,6 +550,18 @@
             panel4.Size = new Size(873, 370);
             panel4.TabIndex = 5;
             // 
+            // btnConfrim
+            // 
+            btnConfrim.BackColor = Color.FromArgb(255, 128, 0);
+            btnConfrim.ForeColor = Color.Black;
+            btnConfrim.Location = new Point(732, 320);
+            btnConfrim.Name = "btnConfrim";
+            btnConfrim.Size = new Size(138, 34);
+            btnConfrim.TabIndex = 17;
+            btnConfrim.Text = "Confirm Payment";
+            btnConfrim.UseVisualStyleBackColor = false;
+            btnConfrim.Click += btnConfirm_Click;
+            // 
             // txtTotalCost
             // 
             txtTotalCost.AutoSize = true;
@@ -595,6 +573,17 @@
             txtTotalCost.TabIndex = 15;
             txtTotalCost.Text = "TOTAL COST:";
             // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.FromArgb(255, 128, 0);
+            btnCancel.ForeColor = Color.Black;
+            btnCancel.Location = new Point(623, 320);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(97, 34);
+            btnCancel.TabIndex = 16;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            // 
             // txtAmountPaid
             // 
             txtAmountPaid.BackColor = Color.White;
@@ -604,6 +593,18 @@
             txtAmountPaid.Name = "txtAmountPaid";
             txtAmountPaid.Size = new Size(294, 32);
             txtAmountPaid.TabIndex = 12;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 0);
+            btnBack.ForeColor = Color.Black;
+            btnBack.Location = new Point(515, 320);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(97, 34);
+            btnBack.TabIndex = 15;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBackRental_Click;
             // 
             // cmbPaymentMethod
             // 
@@ -666,7 +667,6 @@
             tabPage2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudDays).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudCars).EndInit();
             tabPage3.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -711,7 +711,6 @@
         private NumericUpDown nudCars;
         private TextBox txtRate;
         private DateTimePicker dtpRental;
-        private NumericUpDown nudDays;
         private DateTimePicker dtpReturn;
         private Button btnConfrim;
         private Button btnCancel;
@@ -725,5 +724,6 @@
         private Button btnLogOut;
         private Panel panel5;
         private Label txtTotalCost;
+        private Label noDays;
     }
 }

@@ -36,8 +36,8 @@
             txtPassword = new TextBox();
             rdAdmin = new RadioButton();
             rdCustomer = new RadioButton();
-            rdManager = new RadioButton();
-            button1 = new Button();
+            rdClerk = new RadioButton();
+            btnLogin = new Button();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -126,29 +126,29 @@
             rdCustomer.Text = "Customer";
             rdCustomer.UseVisualStyleBackColor = true;
             // 
-            // rdManager
+            // rdClerk
             // 
-            rdManager.AutoSize = true;
-            rdManager.Font = new Font("Segoe UI", 11F);
-            rdManager.Location = new Point(401, 354);
-            rdManager.Name = "rdManager";
-            rdManager.Size = new Size(60, 24);
-            rdManager.TabIndex = 8;
-            rdManager.TabStop = true;
-            rdManager.Text = "Clerk";
-            rdManager.UseVisualStyleBackColor = true;
+            rdClerk.AutoSize = true;
+            rdClerk.Font = new Font("Segoe UI", 11F);
+            rdClerk.Location = new Point(401, 354);
+            rdClerk.Name = "rdClerk";
+            rdClerk.Size = new Size(60, 24);
+            rdClerk.TabIndex = 8;
+            rdClerk.TabStop = true;
+            rdClerk.Text = "Clerk";
+            rdClerk.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnLogin
             // 
-            button1.BackColor = Color.FromArgb(255, 128, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(175, 448);
-            button1.Name = "button1";
-            button1.Size = new Size(155, 46);
-            button1.TabIndex = 9;
-            button1.Text = "LOGIN";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnLogin.BackColor = Color.FromArgb(255, 128, 0);
+            btnLogin.ForeColor = SystemColors.ControlLightLight;
+            btnLogin.Location = new Point(175, 448);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(155, 46);
+            btnLogin.TabIndex = 9;
+            btnLogin.Text = "LOGIN";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // pictureBox1
             // 
@@ -166,8 +166,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1022, 588);
             Controls.Add(pictureBox1);
-            Controls.Add(button1);
-            Controls.Add(rdManager);
+            Controls.Add(btnLogin);
+            Controls.Add(rdClerk);
             Controls.Add(rdCustomer);
             Controls.Add(rdAdmin);
             Controls.Add(txtPassword);
@@ -193,8 +193,8 @@
         private TextBox txtPassword;
         private RadioButton rdAdmin;
         private RadioButton rdCustomer;
-        private RadioButton rdManager;
-        private Button button1;
+        private RadioButton rdClerk;
+        private Button btnLogin;
         private PictureBox pictureBox1;
     }
 }

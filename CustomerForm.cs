@@ -22,12 +22,14 @@
             // Payment Methods
             cmbPaymentMethod.Items.Add("Cash");
             cmbPaymentMethod.Items.Add("GCash");
-            cmbPaymentMethod.Items.Add("Credit Card");
 
             nudCars.Minimum = 1;
-            nudDays.Minimum = 1;
+            nudCars.Value = 1;
 
             txtTotalCost.Text = "TOTAL COST: ₱0.00";
+
+            // Initialize noDays Label
+            noDays.Text = "0";
 
             // Lock tabs — user must go through steps
             tabControl1.TabPages[1].Enabled = false;
@@ -102,6 +104,76 @@
                 case "Ford Ranger - Pickup Truck": txtRate.Text = "3800"; break;
                 default: txtRate.Text = ""; break;
             }
+            // Recalculate when car selection changes
+            CalculateDaysAndCost();
+        }
+
+        // METHOD: Calculate days between rental and return dates
+        private void CalculateDays()
+        {
+            if (dtpReturn.Value.Date > dtpRental.Value.Date)
+            {
+                TimeSpan difference = dtpReturn.Value.Date - dtpRental.Value.Date;
+                int days = difference.Days;
+                noDays.Text = days.ToString(); // Display in Label
+            }
+            else if (dtpReturn.Value.Date == dtpRental.Value.Date)
+            {
+                noDays.Text = "1"; // Minimum 1 day rental
+            }
+            else
+            {
+                noDays.Text = "0";
+            }
+        }
+
+        // METHOD: Calculate total cost based on days, rate, and number of cars
+        private void CalculateTotalCost()
+        {
+            if (string.IsNullOrWhiteSpace(txtRate.Text) || noDays.Text == "0")
+            {
+                txtTotalCost.Text = "TOTAL COST: ₱0.00";
+                return;
+            }
+
+            try
+            {
+                double rate = Convert.ToDouble(txtRate.Text);
+                int cars = Convert.ToInt32(nudCars.Value);
+                int days = Convert.ToInt32(noDays.Text); // Get days from Label
+
+                totalCost = rate * cars * days;
+                txtTotalCost.Text = "TOTAL COST: ₱" + totalCost.ToString("N2");
+            }
+            catch (Exception)
+            {
+                txtTotalCost.Text = "TOTAL COST: ₱0.00";
+            }
+        }
+
+        // METHOD: Combined calculation for both days and cost
+        private void CalculateDaysAndCost()
+        {
+            CalculateDays();
+            CalculateTotalCost();
+        }
+
+        // Event handler for Rental Date change
+        private void dtpRental_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateDaysAndCost();
+        }
+
+        // Event handler for Return Date change
+        private void dtpReturn_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateDaysAndCost();
+        }
+
+        // Event handler for Number of Cars change
+        private void nudCars_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateTotalCost();
         }
 
         private void btnCompute_Click(object sender, EventArgs e)
@@ -136,12 +208,31 @@
                 return;
             }
 
-            double rate = Convert.ToDouble(txtRate.Text);
-            int cars = Convert.ToInt32(nudCars.Value);
-            int days = Convert.ToInt32(nudDays.Value);
+            // Make sure days are calculated
+            CalculateDays();
 
-            totalCost = rate * cars * days;
-            txtTotalCost.Text = "TOTAL COST: ₱" + totalCost.ToString("N2");
+            if (Convert.ToInt32(noDays.Text) <= 0)
+            {
+                MessageBox.Show(
+                    "Please ensure rental days are valid (Return date must be after Rental date).",
+                    "Invalid Days",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Ensure total cost is updated
+            CalculateTotalCost();
+
+            if (totalCost <= 0)
+            {
+                MessageBox.Show(
+                    "Please ensure all rental details are valid.",
+                    "Invalid Calculation",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
 
             tabControl1.TabPages[2].Enabled = true;
             tabControl1.SelectedIndex = 2;
@@ -207,6 +298,7 @@
             }
 
             double change = amountPaid - totalCost;
+            int days = Convert.ToInt32(noDays.Text);
 
             MessageBox.Show(
                 "✅ Payment Successful!\n\n" +
@@ -215,7 +307,7 @@
                 $"Rental Date: {dtpRental.Value:MM/dd/yyyy}\n" +
                 $"Return Date: {dtpReturn.Value:MM/dd/yyyy}\n" +
                 $"No. of Cars: {nudCars.Value}\n" +
-                $"No. of Days: {nudDays.Value}\n\n" +
+                $"No. of Days: {days}\n\n" +
                 $"Payment Method: {cmbPaymentMethod.Text}\n" +
                 $"Total Cost:   ₱{totalCost:N2}\n" +
                 $"Amount Paid:  ₱{amountPaid:N2}\n" +
@@ -289,7 +381,7 @@
             // Tab 2
             cmbCar.SelectedIndex = -1;
             nudCars.Value = 1;
-            nudDays.Value = 1;
+            noDays.Text = "0"; // Reset Label
             txtRate.Clear();
             txtTotalCost.Text = "TOTAL COST: ₱0.00";
 

@@ -4,9 +4,14 @@ namespace CarRentalLegaspi
 {
     public partial class LoginForm : Form
     {
-        public LoginForm() => InitializeComponent();
+        public LoginForm()
+        {
+            InitializeComponent();
+            this.KeyPreview = true;  // Para sa Enter key
+        }
 
-        private void button1_Click(object sender, EventArgs e)
+        // ITO NA ANG BAGONG TAMANG PANGALAN: btnLogin_Click
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
@@ -18,7 +23,7 @@ namespace CarRentalLegaspi
                 return;
             }
 
-            if (!rdAdmin.Checked && !rdCustomer.Checked && !rdManager.Checked)
+            if (!rdAdmin.Checked && !rdCustomer.Checked && !rdClerk.Checked)
             {
                 MessageBox.Show("Please select a role.", "Validation",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -30,7 +35,7 @@ namespace CarRentalLegaspi
                 using var db = new AppDbContext();
 
                 string expectedRole = rdAdmin.Checked ? "Admin"
-                                     : rdManager.Checked ? "Clerk"
+                                     : rdClerk.Checked ? "Clerk"
                                      : "Customer";
 
                 var user = db.Users.FirstOrDefault(u =>
@@ -48,6 +53,16 @@ namespace CarRentalLegaspi
             {
                 MessageBox.Show($"Database error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ENTER KEY FEATURE
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, e);  // Tawagin ang bagong function
             }
         }
 
