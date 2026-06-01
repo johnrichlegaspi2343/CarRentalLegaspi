@@ -34,33 +34,32 @@
             label3 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            button2 = new Button();
-            textBox2 = new TextBox();
+            btnSearch = new Button();
+            txtboxSearch = new TextBox();
             label4 = new Label();
-            dataGridView2 = new DataGridView();
+            dgvManageRentals = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewComboBoxColumn1 = new DataGridViewCheckBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
+            dgvCarInv = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
-            button3 = new Button();
-            button1 = new Button();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            textBox5 = new TextBox();
-            textBox3 = new TextBox();
-            textBox1 = new TextBox();
+            btnUpd = new Button();
+            btnAdd = new Button();
+            cmBoxTypeCar = new ComboBox();
+            cmBoxStatus = new ComboBox();
+            txtBoxRatePDay = new TextBox();
+            txtBoxPlateNo = new TextBox();
+            txtCarName = new TextBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -72,31 +71,31 @@
             panel6 = new Panel();
             label13 = new Label();
             textBox4 = new TextBox();
-            dataGridView3 = new DataGridView();
+            dgvReports = new DataGridView();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
-            button4 = new Button();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            btnGenerate = new Button();
+            dtpTo = new DateTimePicker();
+            dtpFrom = new DateTimePicker();
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvManageRentals).BeginInit();
             tabPage2.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCarInv).BeginInit();
             panel3.SuspendLayout();
             tabPage3.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             panel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -157,10 +156,10 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(button2);
-            tabPage1.Controls.Add(textBox2);
+            tabPage1.Controls.Add(btnSearch);
+            tabPage1.Controls.Add(txtboxSearch);
             tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(dataGridView2);
+            tabPage1.Controls.Add(dgvManageRentals);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -169,27 +168,27 @@
             tabPage1.Text = "Manage Rentals";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSearch
             // 
-            button2.BackColor = Color.White;
-            button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(740, 27);
-            button2.Name = "button2";
-            button2.Size = new Size(177, 27);
-            button2.TabIndex = 14;
-            button2.Text = "🔍 Search";
-            button2.UseVisualStyleBackColor = false;
+            btnSearch.BackColor = Color.White;
+            btnSearch.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.Black;
+            btnSearch.Location = new Point(740, 27);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(177, 27);
+            btnSearch.TabIndex = 14;
+            btnSearch.Text = "🔍 Search";
+            btnSearch.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtboxSearch
             // 
-            textBox2.BackColor = Color.White;
-            textBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(0, 27);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(734, 27);
-            textBox2.TabIndex = 13;
-            textBox2.Text = "Search by customer name...";
+            txtboxSearch.BackColor = Color.White;
+            txtboxSearch.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtboxSearch.Location = new Point(0, 27);
+            txtboxSearch.Name = "txtboxSearch";
+            txtboxSearch.Size = new Size(734, 27);
+            txtboxSearch.TabIndex = 13;
+            txtboxSearch.Text = "Search by customer name...";
             // 
             // label4
             // 
@@ -201,15 +200,15 @@
             label4.TabIndex = 12;
             label4.Text = "🔍 Search Rentals";
             // 
-            // dataGridView2
+            // dgvManageRentals
             // 
-            dataGridView2.BackgroundColor = Color.WhiteSmoke;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewComboBoxColumn1, dataGridViewTextBoxColumn6 });
-            dataGridView2.Location = new Point(0, 60);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(973, 383);
-            dataGridView2.TabIndex = 11;
+            dgvManageRentals.BackgroundColor = Color.WhiteSmoke;
+            dgvManageRentals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvManageRentals.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewComboBoxColumn1 });
+            dgvManageRentals.Location = new Point(0, 60);
+            dgvManageRentals.Name = "dgvManageRentals";
+            dgvManageRentals.Size = new Size(973, 383);
+            dgvManageRentals.TabIndex = 11;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -249,12 +248,6 @@
             dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
             dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn6.HeaderText = "Action";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
             // tabPage2
             // 
             tabPage2.Controls.Add(panel2);
@@ -269,22 +262,22 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(dgvCarInv);
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(-7, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(976, 457);
             panel2.TabIndex = 0;
             // 
-            // dataGridView1
+            // dgvCarInv
             // 
-            dataGridView1.BackgroundColor = Color.WhiteSmoke;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            dataGridView1.Location = new Point(26, 240);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(926, 202);
-            dataGridView1.TabIndex = 1;
+            dgvCarInv.BackgroundColor = Color.WhiteSmoke;
+            dgvCarInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCarInv.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+            dgvCarInv.Location = new Point(26, 240);
+            dgvCarInv.Name = "dgvCarInv";
+            dgvCarInv.Size = new Size(926, 202);
+            dgvCarInv.TabIndex = 1;
             // 
             // Column1
             // 
@@ -319,13 +312,13 @@
             // panel3
             // 
             panel3.BackColor = Color.WhiteSmoke;
-            panel3.Controls.Add(button3);
-            panel3.Controls.Add(button1);
-            panel3.Controls.Add(comboBox2);
-            panel3.Controls.Add(comboBox1);
-            panel3.Controls.Add(textBox5);
-            panel3.Controls.Add(textBox3);
-            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(btnUpd);
+            panel3.Controls.Add(btnAdd);
+            panel3.Controls.Add(cmBoxTypeCar);
+            panel3.Controls.Add(cmBoxStatus);
+            panel3.Controls.Add(txtBoxRatePDay);
+            panel3.Controls.Add(txtBoxPlateNo);
+            panel3.Controls.Add(txtCarName);
             panel3.Controls.Add(label9);
             panel3.Controls.Add(label8);
             panel3.Controls.Add(label7);
@@ -337,71 +330,73 @@
             panel3.Size = new Size(925, 170);
             panel3.TabIndex = 0;
             // 
-            // button3
+            // btnUpd
             // 
-            button3.BackColor = Color.RoyalBlue;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(519, 113);
-            button3.Name = "button3";
-            button3.Size = new Size(78, 27);
-            button3.TabIndex = 14;
-            button3.Text = "📋 Update";
-            button3.UseVisualStyleBackColor = false;
+            btnUpd.BackColor = Color.RoyalBlue;
+            btnUpd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpd.ForeColor = Color.White;
+            btnUpd.Location = new Point(519, 113);
+            btnUpd.Name = "btnUpd";
+            btnUpd.Size = new Size(78, 27);
+            btnUpd.TabIndex = 14;
+            btnUpd.Text = "📋 Update";
+            btnUpd.UseVisualStyleBackColor = false;
+            btnUpd.Click += btnUpd_Click;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.BackColor = Color.White;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(435, 113);
-            button1.Name = "button1";
-            button1.Size = new Size(78, 27);
-            button1.TabIndex = 13;
-            button1.Text = "+ Add";
-            button1.UseVisualStyleBackColor = false;
+            btnAdd.BackColor = Color.White;
+            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = Color.Black;
+            btnAdd.Location = new Point(435, 113);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(78, 27);
+            btnAdd.TabIndex = 13;
+            btnAdd.Text = "+ Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // comboBox2
+            // cmBoxTypeCar
             // 
-            comboBox2.BackColor = Color.White;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(215, 61);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(158, 23);
-            comboBox2.TabIndex = 12;
+            cmBoxTypeCar.BackColor = Color.White;
+            cmBoxTypeCar.FormattingEnabled = true;
+            cmBoxTypeCar.Location = new Point(215, 61);
+            cmBoxTypeCar.Name = "cmBoxTypeCar";
+            cmBoxTypeCar.Size = new Size(158, 23);
+            cmBoxTypeCar.TabIndex = 12;
             // 
-            // comboBox1
+            // cmBoxStatus
             // 
-            comboBox1.BackColor = Color.White;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(215, 117);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 23);
-            comboBox1.TabIndex = 11;
+            cmBoxStatus.BackColor = Color.White;
+            cmBoxStatus.FormattingEnabled = true;
+            cmBoxStatus.Location = new Point(215, 117);
+            cmBoxStatus.Name = "cmBoxStatus";
+            cmBoxStatus.Size = new Size(160, 23);
+            cmBoxStatus.TabIndex = 11;
             // 
-            // textBox5
+            // txtBoxRatePDay
             // 
-            textBox5.BackColor = Color.White;
-            textBox5.Location = new Point(30, 117);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(160, 23);
-            textBox5.TabIndex = 9;
+            txtBoxRatePDay.BackColor = Color.White;
+            txtBoxRatePDay.Location = new Point(30, 117);
+            txtBoxRatePDay.Name = "txtBoxRatePDay";
+            txtBoxRatePDay.Size = new Size(160, 23);
+            txtBoxRatePDay.TabIndex = 9;
             // 
-            // textBox3
+            // txtBoxPlateNo
             // 
-            textBox3.BackColor = Color.White;
-            textBox3.Location = new Point(437, 61);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(160, 23);
-            textBox3.TabIndex = 7;
+            txtBoxPlateNo.BackColor = Color.White;
+            txtBoxPlateNo.Location = new Point(437, 61);
+            txtBoxPlateNo.Name = "txtBoxPlateNo";
+            txtBoxPlateNo.Size = new Size(160, 23);
+            txtBoxPlateNo.TabIndex = 7;
             // 
-            // textBox1
+            // txtCarName
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.Location = new Point(29, 60);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(160, 23);
-            textBox1.TabIndex = 6;
+            txtCarName.BackColor = Color.White;
+            txtCarName.Location = new Point(29, 60);
+            txtCarName.Name = "txtCarName";
+            txtCarName.Size = new Size(160, 23);
+            txtCarName.TabIndex = 6;
             // 
             // label9
             // 
@@ -494,7 +489,7 @@
             panel6.BackColor = Color.White;
             panel6.Controls.Add(label13);
             panel6.Controls.Add(textBox4);
-            panel6.Controls.Add(dataGridView3);
+            panel6.Controls.Add(dgvReports);
             panel6.Location = new Point(18, 188);
             panel6.Name = "panel6";
             panel6.Size = new Size(927, 254);
@@ -521,15 +516,15 @@
             textBox4.Size = new Size(927, 81);
             textBox4.TabIndex = 1;
             // 
-            // dataGridView3
+            // dgvReports
             // 
-            dataGridView3.BackgroundColor = Color.WhiteSmoke;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8, Column9, Column10 });
-            dataGridView3.Location = new Point(0, 0);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(927, 175);
-            dataGridView3.TabIndex = 0;
+            dgvReports.BackgroundColor = Color.WhiteSmoke;
+            dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReports.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8, Column9, Column10 });
+            dgvReports.Location = new Point(0, 0);
+            dgvReports.Name = "dgvReports";
+            dgvReports.Size = new Size(927, 175);
+            dgvReports.TabIndex = 0;
             // 
             // Column6
             // 
@@ -564,9 +559,9 @@
             // panel5
             // 
             panel5.BackColor = Color.WhiteSmoke;
-            panel5.Controls.Add(button4);
-            panel5.Controls.Add(dateTimePicker2);
-            panel5.Controls.Add(dateTimePicker1);
+            panel5.Controls.Add(btnGenerate);
+            panel5.Controls.Add(dtpTo);
+            panel5.Controls.Add(dtpFrom);
             panel5.Controls.Add(label12);
             panel5.Controls.Add(label11);
             panel5.Controls.Add(label10);
@@ -575,31 +570,31 @@
             panel5.Size = new Size(927, 121);
             panel5.TabIndex = 0;
             // 
-            // button4
+            // btnGenerate
             // 
-            button4.BackColor = Color.WhiteSmoke;
-            button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.Black;
-            button4.Location = new Point(444, 58);
-            button4.Name = "button4";
-            button4.Size = new Size(105, 36);
-            button4.TabIndex = 5;
-            button4.Text = "📊Generate";
-            button4.UseVisualStyleBackColor = false;
+            btnGenerate.BackColor = Color.WhiteSmoke;
+            btnGenerate.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGenerate.ForeColor = Color.Black;
+            btnGenerate.Location = new Point(444, 58);
+            btnGenerate.Name = "btnGenerate";
+            btnGenerate.Size = new Size(105, 36);
+            btnGenerate.TabIndex = 5;
+            btnGenerate.Text = "📊Generate";
+            btnGenerate.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker2
+            // dtpTo
             // 
-            dateTimePicker2.Location = new Point(231, 66);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(189, 23);
-            dateTimePicker2.TabIndex = 4;
+            dtpTo.Location = new Point(231, 66);
+            dtpTo.Name = "dtpTo";
+            dtpTo.Size = new Size(189, 23);
+            dtpTo.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            dateTimePicker1.Location = new Point(16, 66);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(189, 23);
-            dateTimePicker1.TabIndex = 3;
+            dtpFrom.Location = new Point(16, 66);
+            dtpFrom.Name = "dtpFrom";
+            dtpFrom.Size = new Size(189, 23);
+            dtpFrom.TabIndex = 3;
             // 
             // label12
             // 
@@ -648,17 +643,17 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvManageRentals).EndInit();
             tabPage2.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCarInv).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             tabPage3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReports).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
@@ -671,38 +666,38 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Button button2;
-        private TextBox textBox2;
+        private TextBox txtboxSearch;
         private Label label4;
-        private DataGridView dataGridView2;
+        private DataGridView dgvManageRentals;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private Label label3;
         private Panel panel2;
         private Panel panel3;
-        private TextBox textBox5;
-        private TextBox textBox3;
-        private TextBox textBox1;
+        private TextBox txtBoxRatePDay;
+        private TextBox txtBoxPlateNo;
+        private TextBox txtCarName;
         private Label label9;
         private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label2;
-        private Button button3;
+        private Button btnUpd;
         private Button button1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private DataGridView dataGridView1;
+        private ComboBox cmBoxTypeCar;
+        private ComboBox cmBoxStatus;
+        private DataGridView dgvCarInv;
         private Panel panel4;
         private Panel panel5;
         private Label label12;
         private Label label11;
         private Label label10;
-        private Button button4;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
+        private Button btnGenerate;
+        private DateTimePicker dtpTo;
+        private DateTimePicker dtpFrom;
         private Panel panel6;
-        private DataGridView dataGridView3;
+        private DataGridView dgvReports;
         private TextBox textBox4;
         private Label label13;
         private DataGridViewTextBoxColumn Column6;
@@ -723,5 +718,8 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewCheckBoxColumn dataGridViewComboBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private Button btnUpdate;
+        private Button btnAdd;
+        private Button btnSearch;
     }
 }

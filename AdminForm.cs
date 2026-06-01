@@ -27,7 +27,7 @@
                 textBox2.Text = db.Rentals.Count().ToString();
                 textBox3.Text = db.Cars.Count(c => c.Status == "Available").ToString();
                 decimal rev = db.Rentals
-                                 .Where(r => r.Status == "Completed")
+                                 //.Where(r => r.Status == "Completed")
                                  .Sum(r => (decimal?)r.Total) ?? 0;
                 textBox4.Text = $"₱{rev:N2}";
 
@@ -130,6 +130,11 @@
             if (MessageBox.Show("Logout?", "Confirm",
         MessageBoxButtons.YesNo) == DialogResult.Yes)
             { Hide(); new LoginForm().Show(); }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

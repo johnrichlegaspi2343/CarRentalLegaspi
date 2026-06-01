@@ -15,35 +15,35 @@ namespace CarRentalLegaspi
             WireEvents();
 
             // I-handle ang DataError events
-            dataGridView1.DataError += DataGridView_DataError;
-            dataGridView2.DataError += DataGridView_DataError;
-            dataGridView3.DataError += DataGridView_DataError;
+            dgvManageRentals.DataError += DataGridView_DataError;
+            dgvManageRentals.DataError += DataGridView_DataError;
+            dgvReports.DataError += DataGridView_DataError;
         }
 
         private void WireEvents()
         {
-            button1.Click += button1_Click;   // Add Car
-            button2.Click += button2_Click;   // Search
-            button3.Click += button3_Click;   // Update Car
-            button4.Click += button4_Click;   // Generate Report
+            btnAdd.Click += btnAdd_Click;   // Add Car
+            btnSearch.Click += btnSearch_Click;   // Search
+            btnUpd.Click += btnUpd_Click;   // Update Car
+            btnGenerate.Click += btnGenerate_Click;   // Generate Report
             btnLogOut.Click += btnLogOut_Click;
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            dgvCarInv.CellClick += dataGridView1_CellClick;
         }
 
         // ── DATAGRIDVIEW CONFIGURATION ────────────────────────────────────────
         private void ConfigureDataGridViews()
         {
             // I-configure ang dataGridView1 (Car Inventory) - gawing TextBox ang Status column
-            if (dataGridView1.Columns["Status"] != null &&
-                (dataGridView1.Columns["Status"] is DataGridViewCheckBoxColumn ||
-                 dataGridView1.Columns["Status"] is DataGridViewComboBoxColumn))
+            if (dgvManageRentals.Columns["Status"] != null &&
+                (dgvManageRentals.Columns["Status"] is DataGridViewCheckBoxColumn ||
+                 dgvManageRentals.Columns["Status"] is DataGridViewComboBoxColumn))
             {
-                int index = dataGridView1.Columns["Status"].Index;
-                string headerText = dataGridView1.Columns["Status"].HeaderText;
-                int width = dataGridView1.Columns["Status"].Width;
+                int index = dgvManageRentals.Columns["Status"].Index;
+                string headerText = dgvManageRentals.Columns["Status"].HeaderText;
+                int width = dgvManageRentals.Columns["Status"].Width;
 
-                dataGridView1.Columns.RemoveAt(index);
-                dataGridView1.Columns.Insert(index, new DataGridViewTextBoxColumn
+                dgvManageRentals.Columns.RemoveAt(index);
+                dgvManageRentals.Columns.Insert(index, new DataGridViewTextBoxColumn
                 {
                     Name = "Status",
                     HeaderText = headerText,
@@ -53,16 +53,16 @@ namespace CarRentalLegaspi
             }
 
             // I-configure ang dataGridView2 (Rentals) - gawing TextBox ang Status column
-            if (dataGridView2.Columns["Status"] != null &&
-                (dataGridView2.Columns["Status"] is DataGridViewCheckBoxColumn ||
-                 dataGridView2.Columns["Status"] is DataGridViewComboBoxColumn))
+            if (dgvManageRentals.Columns["Status"] != null &&
+                (dgvManageRentals.Columns["Status"] is DataGridViewCheckBoxColumn ||
+                 dgvManageRentals.Columns["Status"] is DataGridViewComboBoxColumn))
             {
-                int index = dataGridView2.Columns["Status"].Index;
-                string headerText = dataGridView2.Columns["Status"].HeaderText;
-                int width = dataGridView2.Columns["Status"].Width;
+                int index = dgvManageRentals.Columns["Status"].Index;
+                string headerText = dgvManageRentals.Columns["Status"].HeaderText;
+                int width = dgvManageRentals.Columns["Status"].Width;
 
-                dataGridView2.Columns.RemoveAt(index);
-                dataGridView2.Columns.Insert(index, new DataGridViewTextBoxColumn
+                dgvManageRentals.Columns.RemoveAt(index);
+                dgvManageRentals.Columns.Insert(index, new DataGridViewTextBoxColumn
                 {
                     Name = "Status",
                     HeaderText = headerText,
@@ -72,16 +72,16 @@ namespace CarRentalLegaspi
             }
 
             // I-configure ang dataGridView3 (Reports) - gawing TextBox ang Status column
-            if (dataGridView3.Columns["Status"] != null &&
-                (dataGridView3.Columns["Status"] is DataGridViewCheckBoxColumn ||
-                 dataGridView3.Columns["Status"] is DataGridViewComboBoxColumn))
+            if (dgvReports.Columns["Status"] != null &&
+                (dgvReports.Columns["Status"] is DataGridViewCheckBoxColumn ||
+                 dgvReports.Columns["Status"] is DataGridViewComboBoxColumn))
             {
-                int index = dataGridView3.Columns["Status"].Index;
-                string headerText = dataGridView3.Columns["Status"].HeaderText;
-                int width = dataGridView3.Columns["Status"].Width;
+                int index = dgvReports.Columns["Status"].Index;
+                string headerText = dgvReports.Columns["Status"].HeaderText;
+                int width = dgvReports.Columns["Status"].Width;
 
-                dataGridView3.Columns.RemoveAt(index);
-                dataGridView3.Columns.Insert(index, new DataGridViewTextBoxColumn
+                dgvReports.Columns.RemoveAt(index);
+                dgvReports.Columns.Insert(index, new DataGridViewTextBoxColumn
                 {
                     Name = "Status",
                     HeaderText = headerText,
@@ -104,7 +104,7 @@ namespace CarRentalLegaspi
             try
             {
                 using var db = new AppDbContext();
-                dataGridView2.Rows.Clear();
+                dgvManageRentals.Rows.Clear();
 
                 var q = db.Rentals.AsQueryable();
                 if (!string.IsNullOrEmpty(filter))
@@ -115,7 +115,7 @@ namespace CarRentalLegaspi
                     // Siguraduhin na ang status ay string
                     string status = string.IsNullOrEmpty(r.Status) ? "Active" : r.Status;
 
-                    dataGridView2.Rows.Add(
+                    dgvManageRentals.Rows.Add(
                         $"R-{r.Id:000}",
                         r.Customer,
                         r.Car,
@@ -133,8 +133,8 @@ namespace CarRentalLegaspi
             }
         }
 
-        private void button2_Click(object s, EventArgs e) =>
-            LoadRentals(textBox2.Text.Trim());
+        private void btnSearch_Click(object s, EventArgs e) =>
+            LoadRentals(txtboxSearch.Text.Trim());
 
         // ── CAR INVENTORY ─────────────────────────────────────────
         private void LoadCars()
@@ -142,14 +142,14 @@ namespace CarRentalLegaspi
             try
             {
                 using var db = new AppDbContext();
-                dataGridView1.Rows.Clear();
+                dgvManageRentals.Rows.Clear();
 
                 foreach (var c in db.Cars.ToList())
                 {
                     // Siguraduhin na ang status ay string
                     string status = string.IsNullOrEmpty(c.Status) ? "Available" : c.Status;
 
-                    dataGridView1.Rows.Add(
+                    dgvManageRentals.Rows.Add(
                         c.CarName,
                         c.Type,
                         c.PlateNum,
@@ -167,25 +167,25 @@ namespace CarRentalLegaspi
 
         private void LoadCarComboBoxes()
         {
-            comboBox2.Items.AddRange(new object[]
+            cmBoxTypeCar.Items.AddRange(new object[]
                 { "Sedan", "SUV", "Van", "Pickup Truck" });
-            comboBox1.Items.AddRange(new object[]
+            cmBoxStatus.Items.AddRange(new object[]
                 { "Available", "Rented", "Under Maintenance" });
         }
 
-        private void button1_Click(object sender, EventArgs e) // Add Car
+        private void btnAdd_Click(object sender, EventArgs e) // Add Car
         {
-            if (string.IsNullOrEmpty(textBox1.Text) ||
-                string.IsNullOrEmpty(textBox3.Text) ||
-                string.IsNullOrEmpty(textBox5.Text) ||
-                string.IsNullOrEmpty(comboBox2.Text))
+            if (string.IsNullOrEmpty(txtCarName.Text) ||
+                string.IsNullOrEmpty(txtBoxPlateNo.Text) ||
+                string.IsNullOrEmpty(txtBoxRatePDay.Text) ||
+                string.IsNullOrEmpty(cmBoxTypeCar.Text))
             {
                 MessageBox.Show("Please fill in all car fields.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!decimal.TryParse(textBox5.Text, out decimal rate))
+            if (!decimal.TryParse(txtBoxRatePDay.Text, out decimal rate))
             {
                 MessageBox.Show("Rate must be a valid number.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -197,11 +197,11 @@ namespace CarRentalLegaspi
                 using var db = new AppDbContext();
                 db.Cars.Add(new Car
                 {
-                    CarName = textBox1.Text.Trim(),
-                    Type = comboBox2.Text,
-                    PlateNum = textBox3.Text.Trim(),
+                    CarName = txtCarName.Text.Trim(),
+                    Type = cmBoxTypeCar.Text,
+                    PlateNum = txtBoxPlateNo.Text.Trim(),
                     RatePerDay = rate,
-                    Status = string.IsNullOrEmpty(comboBox1.Text) ? "Available" : comboBox1.Text
+                    Status = string.IsNullOrEmpty(cmBoxStatus.Text) ? "Available" : cmBoxStatus.Text
                 });
                 db.SaveChanges();
                 LoadCars();
@@ -216,16 +216,16 @@ namespace CarRentalLegaspi
             }
         }
 
-        private void button3_Click(object sender, EventArgs e) // Update Car
+        private void btnUpd_Click(object sender, EventArgs e) // Update Car
         {
-            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.Index < 0)
+            if (dgvCarInv.CurrentRow == null || dgvCarInv.CurrentRow.Index < 0)
             {
                 MessageBox.Show("Please select a car row first.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!decimal.TryParse(textBox5.Text, out decimal rate))
+            if (!decimal.TryParse(txtBoxRatePDay.Text, out decimal rate))
             {
                 MessageBox.Show("Rate must be a valid number.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -236,7 +236,7 @@ namespace CarRentalLegaspi
             {
                 // Get the car ID from the database based on plate number or name
                 using var db = new AppDbContext();
-                string carName = textBox1.Text.Trim();
+                string carName = txtCarName.Text.Trim();
                 var car = db.Cars.FirstOrDefault(c => c.CarName == carName);
 
                 if (car == null)
@@ -246,11 +246,11 @@ namespace CarRentalLegaspi
                     return;
                 }
 
-                car.CarName = textBox1.Text.Trim();
-                car.Type = comboBox2.Text;
-                car.PlateNum = textBox3.Text.Trim();
+                car.CarName = txtCarName.Text.Trim();
+                car.Type = cmBoxTypeCar.Text;
+                car.PlateNum = txtBoxPlateNo.Text.Trim();
                 car.RatePerDay = rate;
-                car.Status = string.IsNullOrEmpty(comboBox1.Text) ? "Available" : comboBox1.Text;
+                car.Status = string.IsNullOrEmpty(cmBoxStatus.Text) ? "Available" : cmBoxStatus.Text;
 
                 db.SaveChanges();
                 LoadCars();
@@ -267,11 +267,11 @@ namespace CarRentalLegaspi
 
         private void ClearCarFields()
         {
-            textBox1.Clear();
-            textBox3.Clear();
-            textBox5.Clear();
-            comboBox2.SelectedIndex = -1;
-            comboBox1.SelectedIndex = -1;
+            txtCarName.Clear();
+            txtBoxPlateNo.Clear();
+            txtBoxRatePDay.Clear();
+            cmBoxTypeCar.SelectedIndex = -1;
+            cmBoxStatus.SelectedIndex = -1;
         }
 
         private void dataGridView1_CellClick(object s, DataGridViewCellEventArgs e)
@@ -280,19 +280,19 @@ namespace CarRentalLegaspi
 
             try
             {
-                if (dataGridView1.Rows[e.RowIndex].Cells[0].Value != null)
+                if (dgvCarInv.Rows[e.RowIndex].Cells[0].Value != null)
                 {
-                    textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    comboBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                    textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                    txtCarName.Text = dgvCarInv.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    cmBoxTypeCar.Text = dgvCarInv.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                    txtBoxPlateNo.Text = dgvCarInv.Rows[e.RowIndex].Cells[2].Value?.ToString();
 
                     // Remove the ₱ sign and format the rate
-                    string rateText = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                    string rateText = dgvCarInv.Rows[e.RowIndex].Cells[3].Value?.ToString();
                     if (rateText != null && rateText.StartsWith("₱"))
                         rateText = rateText.Substring(1);
-                    textBox5.Text = rateText;
+                    txtBoxRatePDay.Text = rateText;
 
-                    comboBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                    cmBoxStatus.Text = dgvCarInv.Rows[e.RowIndex].Cells[4].Value?.ToString();
                 }
             }
             catch (Exception ex)
@@ -303,9 +303,9 @@ namespace CarRentalLegaspi
         }
 
         // ── REPORTS ───────────────────────────────────────────────
-        private void button4_Click(object sender, EventArgs e)
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
-            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            if (dtpFrom.Value.Date > dtpTo.Value.Date)
             {
                 MessageBox.Show("'From' date must be before 'To' date.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -315,7 +315,7 @@ namespace CarRentalLegaspi
             try
             {
                 using var db = new AppDbContext();
-                dataGridView3.Rows.Clear();
+                dgvReports.Rows.Clear();
                 decimal total = 0;
 
                 var records = db.Rentals.ToList();
@@ -324,7 +324,7 @@ namespace CarRentalLegaspi
                 {
                     string status = string.IsNullOrEmpty(r.Status) ? "Completed" : r.Status;
 
-                    dataGridView3.Rows.Add(
+                    dgvReports.Rows.Add(
                         $"R-{r.Id:000}",
                         r.Customer,
                         r.Car,

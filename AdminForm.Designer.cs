@@ -255,6 +255,7 @@
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(116, 48);
             textBox4.TabIndex = 7;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // textBox3
             // 

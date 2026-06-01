@@ -39,6 +39,7 @@
             rdClerk = new RadioButton();
             btnLogin = new Button();
             pictureBox1 = new PictureBox();
+            lnklCreateAnAccount = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -106,7 +107,7 @@
             // 
             rdAdmin.AutoSize = true;
             rdAdmin.Font = new Font("Segoe UI", 11F);
-            rdAdmin.Location = new Point(27, 354);
+            rdAdmin.Location = new Point(32, 373);
             rdAdmin.Name = "rdAdmin";
             rdAdmin.Size = new Size(71, 24);
             rdAdmin.TabIndex = 6;
@@ -118,7 +119,7 @@
             // 
             rdCustomer.AutoSize = true;
             rdCustomer.Font = new Font("Segoe UI", 11F);
-            rdCustomer.Location = new Point(197, 354);
+            rdCustomer.Location = new Point(205, 373);
             rdCustomer.Name = "rdCustomer";
             rdCustomer.Size = new Size(90, 24);
             rdCustomer.TabIndex = 7;
@@ -130,7 +131,7 @@
             // 
             rdClerk.AutoSize = true;
             rdClerk.Font = new Font("Segoe UI", 11F);
-            rdClerk.Location = new Point(401, 354);
+            rdClerk.Location = new Point(401, 373);
             rdClerk.Name = "rdClerk";
             rdClerk.Size = new Size(60, 24);
             rdClerk.TabIndex = 8;
@@ -160,11 +161,23 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
+            // lnklCreateAnAccount
+            // 
+            lnklCreateAnAccount.AutoSize = true;
+            lnklCreateAnAccount.Location = new Point(354, 336);
+            lnklCreateAnAccount.Name = "lnklCreateAnAccount";
+            lnklCreateAnAccount.Size = new Size(108, 15);
+            lnklCreateAnAccount.TabIndex = 11;
+            lnklCreateAnAccount.TabStop = true;
+            lnklCreateAnAccount.Text = "Create an account?";
+            lnklCreateAnAccount.LinkClicked += lnklCreateAnAccount_LinkClicked;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1022, 588);
+            Controls.Add(lnklCreateAnAccount);
             Controls.Add(pictureBox1);
             Controls.Add(btnLogin);
             Controls.Add(rdClerk);
@@ -196,5 +209,6 @@
         private RadioButton rdClerk;
         private Button btnLogin;
         private PictureBox pictureBox1;
+        private LinkLabel lnklCreateAnAccount;
     }
 }

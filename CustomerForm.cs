@@ -1,4 +1,7 @@
-﻿namespace CarRentalLegaspi
+﻿using System.Security.Policy;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace CarRentalLegaspi
 {
     public partial class CustomerForm : Form
     {
@@ -299,7 +302,28 @@
 
             double change = amountPaid - totalCost;
             int days = Convert.ToInt32(noDays.Text);
+            try
+            {
+                using var db = new AppDbContext();
 
+                db.Rentals.Add(new Rental
+                {
+                    Customer = txtFirstName.Text + " " + txtLastName.Text,
+                    Car = cmbCar.Text,
+                    Days = (dtpReturn.Value.Date - dtpRental.Value.Date).Days,
+                    Total = (decimal)totalCost,
+                    Status = "ACTIVE",
+                });
+
+                db.SaveChanges();  
+
+                MessageBox.Show($"'{cmbCar.Text}' is successfully rented. Thank you");  
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                return;  
+            }
             MessageBox.Show(
                 "✅ Payment Successful!\n\n" +
                 $"Customer: {txtFirstName.Text} {txtLastName.Text}\n" +

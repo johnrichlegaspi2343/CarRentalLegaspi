@@ -74,5 +74,12 @@ namespace CarRentalLegaspi
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtPassword.Clear(); txtPassword.Focus();
         }
+
+        private void lnklCreateAnAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            SignUpForm signUp = new SignUpForm();
+            signUp.Show();
+        }
     }
 }
