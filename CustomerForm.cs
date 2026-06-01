@@ -14,13 +14,13 @@ namespace CarRentalLegaspi
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            // Cars
-            cmbCar.Items.Add("Toyota Vios - Sedan");
-            cmbCar.Items.Add("Honda City - Sedan");
-            cmbCar.Items.Add("Mitsubishi Montero - SUV");
-            cmbCar.Items.Add("Toyota Fortuner - SUV");
-            cmbCar.Items.Add("Toyota Hiace - Van");
-            cmbCar.Items.Add("Ford Ranger - Pickup Truck");
+            // ✅ Load available cars only from database
+            using var db = new AppDbContext();
+            var availableCars = db.Cars.Where(c => c.Status == "Available").ToList();
+            foreach (var car in availableCars)
+            {
+                cmbCar.Items.Add($"{car.CarName} - {car.Type}");
+            }
 
             // Payment Methods
             cmbPaymentMethod.Items.Add("Cash");
@@ -28,13 +28,9 @@ namespace CarRentalLegaspi
 
             nudCars.Minimum = 1;
             nudCars.Value = 1;
-
             txtTotalCost.Text = "TOTAL COST: ₱0.00";
-
-            // Initialize noDays Label
             noDays.Text = "0";
 
-            // Lock tabs — user must go through steps
             tabControl1.TabPages[1].Enabled = false;
             tabControl1.TabPages[2].Enabled = false;
         }
@@ -57,7 +53,6 @@ namespace CarRentalLegaspi
                 return;
             }
 
-            // Basic email format check
             if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
             {
                 MessageBox.Show(
@@ -68,7 +63,6 @@ namespace CarRentalLegaspi
                 return;
             }
 
-            // Basic contact number check (must be numeric, 11 digits)
             if (!IsValidContact(txtContact.Text))
             {
                 MessageBox.Show(
@@ -95,34 +89,32 @@ namespace CarRentalLegaspi
 
         // ─── TAB 2: RENTAL DETAILS ───────────────────────────────────
 
+        // ✅ Kuhanin rate from DB instead of hardcoded
         private void cmbCar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbCar.Text)
-            {
-                case "Toyota Vios - Sedan": txtRate.Text = "1500"; break;
-                case "Honda City - Sedan": txtRate.Text = "1800"; break;
-                case "Mitsubishi Montero - SUV": txtRate.Text = "3500"; break;
-                case "Toyota Fortuner - SUV": txtRate.Text = "4000"; break;
-                case "Toyota Hiace - Van": txtRate.Text = "4500"; break;
-                case "Ford Ranger - Pickup Truck": txtRate.Text = "3800"; break;
-                default: txtRate.Text = ""; break;
-            }
-            // Recalculate when car selection changes
+            if (cmbCar.SelectedIndex == -1) return;
+
+            string selectedCar = cmbCar.Text.Split('-')[0].Trim();
+
+            using var db = new AppDbContext();
+            var car = db.Cars.FirstOrDefault(c => c.CarName == selectedCar);
+            if (car != null)
+                txtRate.Text = car.RatePerDay.ToString();
+
             CalculateDaysAndCost();
         }
 
-        // METHOD: Calculate days between rental and return dates
         private void CalculateDays()
         {
             if (dtpReturn.Value.Date > dtpRental.Value.Date)
             {
                 TimeSpan difference = dtpReturn.Value.Date - dtpRental.Value.Date;
                 int days = difference.Days;
-                noDays.Text = days.ToString(); // Display in Label
+                noDays.Text = days.ToString();
             }
             else if (dtpReturn.Value.Date == dtpRental.Value.Date)
             {
-                noDays.Text = "1"; // Minimum 1 day rental
+                noDays.Text = "1";
             }
             else
             {
@@ -130,7 +122,6 @@ namespace CarRentalLegaspi
             }
         }
 
-        // METHOD: Calculate total cost based on days, rate, and number of cars
         private void CalculateTotalCost()
         {
             if (string.IsNullOrWhiteSpace(txtRate.Text) || noDays.Text == "0")
@@ -143,7 +134,7 @@ namespace CarRentalLegaspi
             {
                 double rate = Convert.ToDouble(txtRate.Text);
                 int cars = Convert.ToInt32(nudCars.Value);
-                int days = Convert.ToInt32(noDays.Text); // Get days from Label
+                int days = Convert.ToInt32(noDays.Text);
 
                 totalCost = rate * cars * days;
                 txtTotalCost.Text = "TOTAL COST: ₱" + totalCost.ToString("N2");
@@ -154,26 +145,22 @@ namespace CarRentalLegaspi
             }
         }
 
-        // METHOD: Combined calculation for both days and cost
         private void CalculateDaysAndCost()
         {
             CalculateDays();
             CalculateTotalCost();
         }
 
-        // Event handler for Rental Date change
         private void dtpRental_ValueChanged(object sender, EventArgs e)
         {
             CalculateDaysAndCost();
         }
 
-        // Event handler for Return Date change
         private void dtpReturn_ValueChanged(object sender, EventArgs e)
         {
             CalculateDaysAndCost();
         }
 
-        // Event handler for Number of Cars change
         private void nudCars_ValueChanged(object sender, EventArgs e)
         {
             CalculateTotalCost();
@@ -211,7 +198,6 @@ namespace CarRentalLegaspi
                 return;
             }
 
-            // Make sure days are calculated
             CalculateDays();
 
             if (Convert.ToInt32(noDays.Text) <= 0)
@@ -224,7 +210,6 @@ namespace CarRentalLegaspi
                 return;
             }
 
-            // Ensure total cost is updated
             CalculateTotalCost();
 
             if (totalCost <= 0)
@@ -302,6 +287,7 @@ namespace CarRentalLegaspi
 
             double change = amountPaid - totalCost;
             int days = Convert.ToInt32(noDays.Text);
+
             try
             {
                 using var db = new AppDbContext();
@@ -315,15 +301,24 @@ namespace CarRentalLegaspi
                     Status = "ACTIVE",
                 });
 
-                db.SaveChanges();  
+                // ✅ I-update ang car status sa "Rented"
+                string selectedCar = cmbCar.Text.Split('-')[0].Trim();
+                var car = db.Cars.FirstOrDefault(c => c.CarName == selectedCar);
+                if (car != null)
+                {
+                    car.Status = "Rented";
+                }
 
-                MessageBox.Show($"'{cmbCar.Text}' is successfully rented. Thank you");  
+                db.SaveChanges();
+
+                MessageBox.Show($"'{cmbCar.Text}' is successfully rented. Thank you");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
-                return;  
+                return;
             }
+
             MessageBox.Show(
                 "✅ Payment Successful!\n\n" +
                 $"Customer: {txtFirstName.Text} {txtLastName.Text}\n" +
@@ -402,10 +397,18 @@ namespace CarRentalLegaspi
             txtEmail.Clear();
             txtAddress.Clear();
 
-            // Tab 2
+            // Tab 2 — ✅ Reload available cars
+            cmbCar.Items.Clear();
+            using var db = new AppDbContext();
+            var availableCars = db.Cars.Where(c => c.Status == "Available").ToList();
+            foreach (var car in availableCars)
+            {
+                cmbCar.Items.Add($"{car.CarName} - {car.Type}");
+            }
+
             cmbCar.SelectedIndex = -1;
             nudCars.Value = 1;
-            noDays.Text = "0"; // Reset Label
+            noDays.Text = "0";
             txtRate.Clear();
             txtTotalCost.Text = "TOTAL COST: ₱0.00";
 
@@ -415,7 +418,6 @@ namespace CarRentalLegaspi
 
             totalCost = 0;
 
-            // Lock tabs again and go back to start
             tabControl1.TabPages[1].Enabled = false;
             tabControl1.TabPages[2].Enabled = false;
             tabControl1.SelectedIndex = 0;

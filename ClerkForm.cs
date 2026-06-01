@@ -27,7 +27,7 @@ namespace CarRentalLegaspi
             btnUpd.Click += btnUpd_Click;   // Update Car
             btnGenerate.Click += btnGenerate_Click;   // Generate Report
             btnLogOut.Click += btnLogOut_Click;
-            dgvCarInv.CellClick += dataGridView1_CellClick;
+            dgvCarInv.CellClick += dgvCarInv_CellClick;
         }
 
         // ── DATAGRIDVIEW CONFIGURATION ────────────────────────────────────────
@@ -121,8 +121,7 @@ namespace CarRentalLegaspi
                         r.Car,
                         r.Days,
                         $"₱{r.Total:N2}",
-                        status,
-                        "Edit"
+                        status
                     );
                 }
             }
@@ -142,14 +141,14 @@ namespace CarRentalLegaspi
             try
             {
                 using var db = new AppDbContext();
-                dgvManageRentals.Rows.Clear();
+                dgvCarInv.Rows.Clear();
 
                 foreach (var c in db.Cars.ToList())
                 {
                     // Siguraduhin na ang status ay string
                     string status = string.IsNullOrEmpty(c.Status) ? "Available" : c.Status;
 
-                    dgvManageRentals.Rows.Add(
+                    dgvCarInv.Rows.Add(
                         c.CarName,
                         c.Type,
                         c.PlateNum,
@@ -274,7 +273,7 @@ namespace CarRentalLegaspi
             cmBoxStatus.SelectedIndex = -1;
         }
 
-        private void dataGridView1_CellClick(object s, DataGridViewCellEventArgs e)
+        private void dgvCarInv_CellClick(object s, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
