@@ -5,73 +5,45 @@ namespace CarRentalLegaspi
         public ClerkForm()
         {
             InitializeComponent();
-
-            // I-configure ang DataGridViews bago mag-load ng data
             ConfigureDataGridViews();
-
             LoadRentals();
             LoadCars();
             LoadCarComboBoxes();
             WireEvents();
-
-            // I-handle ang DataError events
-            dgvManageRentals.DataError += DataGridView_DataError;
             dgvManageRentals.DataError += DataGridView_DataError;
             dgvReports.DataError += DataGridView_DataError;
         }
 
         private void WireEvents()
         {
-            btnAdd.Click += btnAdd_Click;   // Add Car
-            btnSearch.Click += btnSearch_Click;   // Search
-            btnUpd.Click += btnUpd_Click;   // Update Car
-            btnGenerate.Click += btnGenerate_Click;   // Generate Report
+            btnAdd.Click += btnAdd_Click;
+            btnSearch.Click += btnSearch_Click;
+            btnUpd.Click += btnUpd_Click;
+            btnGenerate.Click += btnGenerate_Click;
             btnLogOut.Click += btnLogOut_Click;
             dgvCarInv.CellClick += dgvCarInv_CellClick;
+            dgvManageRentals.CellPainting += dgvManageRentals_CellPainting;
         }
 
         // ── DATAGRIDVIEW CONFIGURATION ────────────────────────────────────────
         private void ConfigureDataGridViews()
         {
-            // I-configure ang dataGridView1 (Car Inventory) - gawing TextBox ang Status column
-            if (dgvManageRentals.Columns["Status"] != null &&
-                (dgvManageRentals.Columns["Status"] is DataGridViewCheckBoxColumn ||
-                 dgvManageRentals.Columns["Status"] is DataGridViewComboBoxColumn))
+            // Fix Status column sa dgvManageRentals - palitan ng TextBox
+            var statusCol = dgvManageRentals.Columns["dataGridViewComboBoxColumn1"];
+            if (statusCol != null)
             {
-                int index = dgvManageRentals.Columns["Status"].Index;
-                string headerText = dgvManageRentals.Columns["Status"].HeaderText;
-                int width = dgvManageRentals.Columns["Status"].Width;
-
+                int index = statusCol.Index;
                 dgvManageRentals.Columns.RemoveAt(index);
                 dgvManageRentals.Columns.Insert(index, new DataGridViewTextBoxColumn
                 {
-                    Name = "Status",
-                    HeaderText = headerText,
-                    Width = width,
+                    Name = "dataGridViewComboBoxColumn1",
+                    HeaderText = "Status",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                     ReadOnly = true
                 });
             }
 
-            // I-configure ang dataGridView2 (Rentals) - gawing TextBox ang Status column
-            if (dgvManageRentals.Columns["Status"] != null &&
-                (dgvManageRentals.Columns["Status"] is DataGridViewCheckBoxColumn ||
-                 dgvManageRentals.Columns["Status"] is DataGridViewComboBoxColumn))
-            {
-                int index = dgvManageRentals.Columns["Status"].Index;
-                string headerText = dgvManageRentals.Columns["Status"].HeaderText;
-                int width = dgvManageRentals.Columns["Status"].Width;
-
-                dgvManageRentals.Columns.RemoveAt(index);
-                dgvManageRentals.Columns.Insert(index, new DataGridViewTextBoxColumn
-                {
-                    Name = "Status",
-                    HeaderText = headerText,
-                    Width = width,
-                    ReadOnly = true
-                });
-            }
-
-            // I-configure ang dataGridView3 (Reports) - gawing TextBox ang Status column
+            // Fix Status column sa dgvReports
             if (dgvReports.Columns["Status"] != null &&
                 (dgvReports.Columns["Status"] is DataGridViewCheckBoxColumn ||
                  dgvReports.Columns["Status"] is DataGridViewComboBoxColumn))
@@ -79,7 +51,6 @@ namespace CarRentalLegaspi
                 int index = dgvReports.Columns["Status"].Index;
                 string headerText = dgvReports.Columns["Status"].HeaderText;
                 int width = dgvReports.Columns["Status"].Width;
-
                 dgvReports.Columns.RemoveAt(index);
                 dgvReports.Columns.Insert(index, new DataGridViewTextBoxColumn
                 {
@@ -91,14 +62,37 @@ namespace CarRentalLegaspi
             }
         }
 
-        // I-handle ang DataGridView errors
         private void DataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            // Cancel the error para hindi mag-popup ang error dialog
             e.Cancel = true;
         }
 
-        // ── MANAGE RENTALS ────────────────────────────────────────
+        // ── STATUS COLOR INDICATOR ────────────────────────────────────────────
+        private void dgvManageRentals_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
+
+                string status = e.Value?.ToString() ?? "";
+                Color textColor = status == "Active" ? Color.Green : Color.Red;
+                string indicator = status == "Active" ? "🟢 Active" : "🔴 Completed";
+
+                using var brush = new SolidBrush(textColor);
+                var format = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+
+                e.Graphics.DrawString(indicator, e.CellStyle.Font ?? dgvManageRentals.Font,
+                    brush, e.CellBounds, format);
+
+                e.Handled = true;
+            }
+        }
+
+        // ── MANAGE RENTALS ────────────────────────────────────────────────────
         private void LoadRentals(string filter = "")
         {
             try
@@ -112,17 +106,26 @@ namespace CarRentalLegaspi
 
                 foreach (var r in q.ToList())
                 {
-                    // Siguraduhin na ang status ay string
-                    string status = string.IsNullOrEmpty(r.Status) ? "Active" : r.Status;
+                    DateTime endDate = r.RentalDate.AddDays(r.Days);
+                    bool isExpired = DateTime.Today > endDate;
 
-                    dgvManageRentals.Rows.Add(
-                        $"R-{r.Id:000}",
-                        r.Customer,
-                        r.Car,
-                        r.Days,
-                        $"₱{r.Total:N2}",
-                        status
-                    );
+                    if (isExpired && r.Status == "Active")
+                    {
+                        r.Status = "Completed";
+                        db.SaveChanges();
+                    }
+
+                 
+                    {
+                        dgvManageRentals.Rows.Add(
+                            $"R-{r.Id:000}",
+                            r.Customer,
+                            r.Car,
+                            r.Days,
+                            $"₱{r.Total:N2}",
+                            r.Status
+                        );
+                    }
                 }
             }
             catch (Exception ex)
@@ -135,7 +138,7 @@ namespace CarRentalLegaspi
         private void btnSearch_Click(object s, EventArgs e) =>
             LoadRentals(txtboxSearch.Text.Trim());
 
-        // ── CAR INVENTORY ─────────────────────────────────────────
+        // ── CAR INVENTORY ─────────────────────────────────────────────────────
         private void LoadCars()
         {
             try
@@ -145,9 +148,7 @@ namespace CarRentalLegaspi
 
                 foreach (var c in db.Cars.ToList())
                 {
-                    // Siguraduhin na ang status ay string
                     string status = string.IsNullOrEmpty(c.Status) ? "Available" : c.Status;
-
                     dgvCarInv.Rows.Add(
                         c.CarName,
                         c.Type,
@@ -172,7 +173,7 @@ namespace CarRentalLegaspi
                 { "Available", "Rented", "Under Maintenance" });
         }
 
-        private void btnAdd_Click(object sender, EventArgs e) // Add Car
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCarName.Text) ||
                 string.IsNullOrEmpty(txtBoxPlateNo.Text) ||
@@ -215,7 +216,7 @@ namespace CarRentalLegaspi
             }
         }
 
-        private void btnUpd_Click(object sender, EventArgs e) // Update Car
+        private void btnUpd_Click(object sender, EventArgs e)
         {
             if (dgvCarInv.CurrentRow == null || dgvCarInv.CurrentRow.Index < 0)
             {
@@ -233,7 +234,6 @@ namespace CarRentalLegaspi
 
             try
             {
-                // Get the car ID from the database based on plate number or name
                 using var db = new AppDbContext();
                 string carName = txtCarName.Text.Trim();
                 var car = db.Cars.FirstOrDefault(c => c.CarName == carName);
@@ -285,7 +285,6 @@ namespace CarRentalLegaspi
                     cmBoxTypeCar.Text = dgvCarInv.Rows[e.RowIndex].Cells[1].Value?.ToString();
                     txtBoxPlateNo.Text = dgvCarInv.Rows[e.RowIndex].Cells[2].Value?.ToString();
 
-                    // Remove the ₱ sign and format the rate
                     string rateText = dgvCarInv.Rows[e.RowIndex].Cells[3].Value?.ToString();
                     if (rateText != null && rateText.StartsWith("₱"))
                         rateText = rateText.Substring(1);
@@ -301,7 +300,7 @@ namespace CarRentalLegaspi
             }
         }
 
-        // ── REPORTS ───────────────────────────────────────────────
+        // ── REPORTS ───────────────────────────────────────────────────────────
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             if (dtpFrom.Value.Date > dtpTo.Value.Date)
@@ -322,7 +321,6 @@ namespace CarRentalLegaspi
                 foreach (var r in records)
                 {
                     string status = string.IsNullOrEmpty(r.Status) ? "Completed" : r.Status;
-
                     dgvReports.Rows.Add(
                         $"R-{r.Id:000}",
                         r.Customer,

@@ -149,7 +149,7 @@
             tabControl1.Location = new Point(1, 47);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(976, 489);
+            tabControl1.Size = new Size(976, 478);
             tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -158,7 +158,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(968, 461);
+            tabPage1.Size = new Size(968, 450);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dashboard";
             tabPage1.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(968, 461);
+            tabPage2.Size = new Size(968, 450);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "User Management";
             tabPage2.UseVisualStyleBackColor = true;
@@ -497,7 +497,7 @@
             tabPage3.Controls.Add(panel6);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(968, 461);
+            tabPage3.Size = new Size(968, 450);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Settings";
             tabPage3.UseVisualStyleBackColor = true;

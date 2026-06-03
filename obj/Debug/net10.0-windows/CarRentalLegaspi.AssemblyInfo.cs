@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarRentalLegaspi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+979580ae897ffa73f3d4326afdd663f42dcd4093")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+958664700203c24f8630630a4e33512b2f01bb39")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarRentalLegaspi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarRentalLegaspi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,6 +11,7 @@ namespace CarRentalLegaspi
         public decimal Total { get; set; }
         public string Status { get; set; } = string.Empty;
         public string Action { get; set; } = string.Empty;
+        public DateTime RentalDate { get; set; } = DateTime.Today;
     }
 
     public class Car
@@ -65,6 +66,10 @@ namespace CarRentalLegaspi
                 .Property(c => c.PlateNum)
                 .HasColumnName("PlateNum")
                 .HasColumnType("nvarchar(50)");
+
+            modelBuilder.Entity<Rental>()
+               .Property(r => r.RentalDate)
+               .HasDefaultValueSql("GETDATE()");
         }
     }
 }
